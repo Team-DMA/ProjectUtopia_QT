@@ -2,6 +2,7 @@
 #define STARTGAMEDIALOG_H
 
 #include <QWidget>
+#include <QLabel>
 
 class startGameDialog : public QWidget
 {
@@ -9,7 +10,8 @@ class startGameDialog : public QWidget
 public:
     explicit startGameDialog(QWidget *parent = nullptr);
     ~startGameDialog();
-
+private:
+    QLabel textLabel;
 private slots:
     void continueGame(void);
     void startNewGame(void);

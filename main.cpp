@@ -1,7 +1,15 @@
-#include "mainwindow.h"
-
 #include <QApplication>
 #include <QtDebug>
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
+#include <QPushButton>
+#include <QTextEdit>
+#include <QLineEdit>
+#include <QLabel>
+#include <QVBoxLayout>
+#include <QMenu>
+#include <QAction>
+
 
 //Test
 

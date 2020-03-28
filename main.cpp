@@ -17,6 +17,10 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     MainWindow w;
+
+    //Background image; in styleshett/css geschrieben
+    w.setStyleSheet("MainWindow {border-image: url(:/img/background.jpg) 0 0 0 0 stretch stretch;}");
+
     w.show();
     qDebug() << "das ist ein TEST";
     return a.exec();

@@ -52,5 +52,5 @@ void startGameDialog::abortDialog()
 {
     qDebug() << "Back to menu." << endl;
 
-    textLabel.setText("Go back go back!");
+    this->close();
 }

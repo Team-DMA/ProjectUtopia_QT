@@ -1,18 +1,12 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QPushButton>
-#include <QTextEdit>
-#include <QLineEdit>
 #include <QLabel>
-#include <QLineEdit>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
-#include <QMenu>
-#include <QAction>
-#include <QStyle>
-#include <QDesktopWidget>
-#include <QPixmap>
 #include <QMediaPlayer>
+#include <QGridLayout>
+#include <QSettings>
 
 #include <QDebug>
 
@@ -24,24 +18,31 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    //buttons
-    QHBoxLayout *btnLayout = new QHBoxLayout();
+    QString settingsFile = QApplication::applicationDirPath().left(1) + ":/settings.ini";
 
+    //layout
+    QGridLayout *gLayout = new QGridLayout(this);
+
+    QLabel *headText = new QLabel(this);
+    headText->setText("Welcome to your point'n'click adventure");
     QPushButton *startButton = new QPushButton("&Start game",this);
 
-    btnLayout->addWidget(startButton);
-    btnLayout->setAlignment(Qt::AlignCenter); //sollte eigentlich mittig sein
-    btnLayout->setContentsMargins(0,0,0,0);
+    gLayout->setAlignment(Qt::AlignCenter); //sollte eigentlich mittig sein
+    gLayout->addWidget(headText,0,0,Qt::AlignCenter);
+    gLayout->addWidget(startButton,1,0,Qt::AlignCenter);
 
     connect(startButton,SIGNAL(clicked()),this,SLOT(startGame()));
 
-    this->setLayout(btnLayout);
+    QWidget *newWindow = new QWidget();
+    newWindow->setLayout(gLayout);
+    setCentralWidget(newWindow);
 
     //background music
     QMediaPlayer *menuMusic = new QMediaPlayer();
     connect(menuMusic,SIGNAL(stateChanged(QMediaPlayer)),this,SLOT(play())); //soll bei state-änderung von neu anfangen
     menuMusic->setMedia(QUrl("qrc:/sounds/background.wav"));
     menuMusic->play();
+
 }
 
 MainWindow::~MainWindow()
@@ -54,10 +55,9 @@ void MainWindow::startGame(void)
     qDebug() << "Started game." << endl;
 
     startGameDialog *window = new startGameDialog();
-    int x = (this->width()) / 2;
-    int y = (this->height()) / 2;
+    window->setParent(this);
     window->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
     window->show();
-    window->move(x,y);
+    window->move(this->geometry().center() - window->rect().center());
 }
 

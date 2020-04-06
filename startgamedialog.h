@@ -4,12 +4,15 @@
 #include <QWidget>
 #include <QLabel>
 
+#include "settings.h"
+
 class startGameDialog : public QWidget
 {
     Q_OBJECT
 public:
     explicit startGameDialog(QWidget *parent = nullptr);
     ~startGameDialog();
+    settings sSettings;
 private:
     QLabel textLabel;
 private slots:

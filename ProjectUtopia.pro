@@ -18,11 +18,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     main.cpp \
+    maingame.cpp \
     mainwindow.cpp \
+    settings.cpp \
     startgamedialog.cpp
 
 HEADERS += \
+    maingame.h \
     mainwindow.h \
+    settings.h \
     startgamedialog.h
 
 FORMS += \

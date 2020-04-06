@@ -1,11 +1,14 @@
 #include "startgamedialog.h"
 
+#include "maingame.h"
+
 #include <QLabel>
 #include <QDialogButtonBox>
 #include <QPushButton>
 #include <QVBoxLayout>
 
 #include <QDebug>
+
 
 startGameDialog::startGameDialog(QWidget *parent) : QWidget(parent)
 {
@@ -40,7 +43,13 @@ void startGameDialog::continueGame()
 {
     qDebug() << "Game continued." << endl;
 
-    textLabel.setText("Game continued.");
+    mainGame *mainGameWindow = new mainGame();
+    mainGameWindow->setFixedSize(1600,900);
+    mainGameWindow->setParent(this);
+    mainGameWindow->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+    mainGameWindow->show();
+    mainGameWindow->move(this->geometry().center() - mainGameWindow->rect().center());
+
 }
 void startGameDialog::startNewGame()
 {

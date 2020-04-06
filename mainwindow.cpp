@@ -34,12 +34,15 @@ MainWindow::MainWindow(QWidget *parent)
     gLayout->addWidget(optionButton,1,2,Qt::AlignCenter);
 
 
+
+
     connect(startButton,SIGNAL(clicked()),this,SLOT(startGame()));
     connect(optionButton,SIGNAL(clicked()),this,SLOT(options()));
 
-    QWidget *newWindow = new QWidget();
-    newWindow->setLayout(gLayout);
-    setCentralWidget(newWindow);
+    windowWidget = new QWidget();
+    windowWidget->setLayout(gLayout);
+    setCentralWidget(windowWidget);
+
 
     //background music
     QMediaPlayer *menuMusic = new QMediaPlayer();

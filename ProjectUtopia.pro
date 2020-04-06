@@ -20,12 +20,14 @@ SOURCES += \
     main.cpp \
     maingame.cpp \
     mainwindow.cpp \
+    optionswindow.cpp \
     settings.cpp \
     startgamedialog.cpp
 
 HEADERS += \
     maingame.h \
     mainwindow.h \
+    optionswindow.h \
     settings.h \
     startgamedialog.h
 

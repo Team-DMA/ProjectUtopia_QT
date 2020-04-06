@@ -26,12 +26,16 @@ MainWindow::MainWindow(QWidget *parent)
     QLabel *headText = new QLabel(this);
     headText->setText("Welcome to your point'n'click adventure");
     QPushButton *startButton = new QPushButton("&Start game",this);
+    QPushButton *optionButton = new QPushButton("&Options",this);
 
     gLayout->setAlignment(Qt::AlignCenter); //sollte eigentlich mittig sein
     gLayout->addWidget(headText,0,0,Qt::AlignCenter);
     gLayout->addWidget(startButton,1,0,Qt::AlignCenter);
+    gLayout->addWidget(optionButton,1,2,Qt::AlignCenter);
+
 
     connect(startButton,SIGNAL(clicked()),this,SLOT(startGame()));
+    connect(optionButton,SIGNAL(clicked()),this,SLOT(options()));
 
     QWidget *newWindow = new QWidget();
     newWindow->setLayout(gLayout);
@@ -53,7 +57,6 @@ MainWindow::~MainWindow()
 void MainWindow::startGame(void)
 {
     qDebug() << "Started game." << endl;
-
     startGameDialog *window = new startGameDialog();
     window->setParent(this);
     window->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
@@ -61,3 +64,12 @@ void MainWindow::startGame(void)
     window->move(this->geometry().center() - window->rect().center());
 }
 
+void MainWindow::options(void)
+{
+
+    startGameDialog *optionWindow = new startGameDialog();
+    optionWindow->setParent(this);
+    optionWindow->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+    optionWindow->show();
+    optionWindow->move(this->geometry().center() - optionWindow->rect().center());
+}

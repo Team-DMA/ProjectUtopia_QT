@@ -22,5 +22,6 @@ private:
 
 private slots:
     void startGame(void);
+    void options(void);
 };
 #endif // MAINWINDOW_H

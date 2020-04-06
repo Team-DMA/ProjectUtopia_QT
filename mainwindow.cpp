@@ -70,6 +70,8 @@ void MainWindow::startGame(void)
 void MainWindow::options(void)
 {
 
+    windowWidget->setVisible(false);
+
     startGameDialog *optionWindow = new startGameDialog();
     optionWindow->setParent(this);
     optionWindow->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);

@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QLabel>
+#include <QProgressBar>
 
 #include "settings.h"
 
@@ -15,6 +16,7 @@ public:
     settings sSettings;
 private:
     QLabel textLabel;
+    QProgressBar progress;
 private slots:
     void continueGame(void);
     void startNewGame(void);

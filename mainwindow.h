@@ -20,6 +20,8 @@ public:
 private:
     Ui::MainWindow *ui;
 
+    QWidget *windowWidget;
+
 private slots:
     void startGame(void);
 };

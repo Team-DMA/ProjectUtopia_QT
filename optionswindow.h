@@ -11,6 +11,10 @@ class optionsWindow : public QWidget
 public:
 
      explicit optionsWindow(QWidget *parent = nullptr);
+     QWidget *windowWidget;
+    int value;
+
+
 };
 
 #endif // OPTIONSWINDOW_H

@@ -23,6 +23,8 @@ private:
 
 private slots:
     void enterGame();
+public slots:
+
 
 };
 #endif // MAINWINDOW_H

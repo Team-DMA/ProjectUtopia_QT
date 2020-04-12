@@ -1,7 +1,7 @@
 #include "startgamedialog.h"
 #include "mainwindow.h"
 #include "maingame.h"
-
+#include "mainmenue.h"
 #include <QLabel>
 #include <QDialogButtonBox>
 #include <QPushButton>
@@ -94,4 +94,9 @@ void startGameDialog::abortDialog()
     QT_FEATURE_mainwindow;
 
     this->close();
+    MainMenue *optionWindow = new MainMenue();
+    optionWindow->setParent(this);
+    optionWindow->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+    optionWindow->show();
+    optionWindow->move(this->geometry().center() - optionWindow->rect().center());
 }

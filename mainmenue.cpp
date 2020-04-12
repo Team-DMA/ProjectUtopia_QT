@@ -42,7 +42,7 @@ MainMenue::MainMenue(QWidget *parent)
 
 void MainMenue::startGame(void)
 {
-    this->close();
+    windowWidget->close();
     qDebug() << "Started game." << endl;
     startGameDialog *window = new startGameDialog();
     window->setParent(this);
@@ -54,7 +54,7 @@ void MainMenue::startGame(void)
 void MainMenue::options(void)
 {
 
-    this->close();
+    windowWidget->close();
 
     optionsWindow *optionWindow = new optionsWindow();
     optionWindow->setParent(this);

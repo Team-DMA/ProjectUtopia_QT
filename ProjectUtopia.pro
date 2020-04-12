@@ -19,6 +19,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     main.cpp \
     maingame.cpp \
+    mainmenue.cpp \
     mainwindow.cpp \
     optionswindow.cpp \
     settings.cpp \
@@ -26,6 +27,7 @@ SOURCES += \
 
 HEADERS += \
     maingame.h \
+    mainmenue.h \
     mainwindow.h \
     optionswindow.h \
     settings.h \

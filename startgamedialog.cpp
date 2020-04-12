@@ -1,5 +1,5 @@
 #include "startgamedialog.h"
-
+#include "mainwindow.h"
 #include "maingame.h"
 
 #include <QLabel>
@@ -91,6 +91,7 @@ void startGameDialog::startNewGame()
 void startGameDialog::abortDialog()
 {
     qDebug() << "Back to menu." << endl;
+    QT_FEATURE_mainwindow;
 
     this->close();
 }

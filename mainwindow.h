@@ -16,14 +16,13 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     settings sSettings;
+    QWidget *windowWidget;
 
 private:
     Ui::MainWindow *ui;
 
-    QWidget *windowWidget;
-
 private slots:
-    void startGame(void);
-    void options(void);
+    void enterGame();
+
 };
 #endif // MAINWINDOW_H

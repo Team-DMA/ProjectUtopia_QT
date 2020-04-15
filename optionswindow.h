@@ -2,6 +2,7 @@
 #define OPTIONSWINDOW_H
 #include <QWidget>
 #include <QLabel>
+#include <QSlider>
 #include <QProgressBar>
 
 #include "settings.h"
@@ -12,7 +13,10 @@ public:
 
      explicit optionsWindow(QWidget *parent = nullptr);
      QWidget *windowWidget;
-    int value;
+private:
+     QSlider slide;
+public slots:
+    int vol();
 
 
 };

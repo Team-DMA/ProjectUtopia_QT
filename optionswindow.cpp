@@ -18,20 +18,22 @@ optionsWindow::optionsWindow(QWidget *parent): QWidget(parent)
 
     QLabel *headText = new QLabel(this);
     headText->setText("Welcome to your point'n'click adventure");
-    QSlider *setvalue = new QSlider;
 
     gLayout->setAlignment(Qt::AlignCenter); //sollte eigentlich mittig sein
     gLayout->addWidget(headText,0,0,Qt::AlignCenter);
-    gLayout->addWidget(setvalue,1,0,Qt::AlignCenter);
+    gLayout->addWidget(&slide,1,0,Qt::AlignCenter);
 
 
 
 
+    connect(&slide,SIGNAL(valueChanged()),this,SLOT(vol()));
 
-    connect(setvalue,SIGNAL(valueChanged(int)),this,SLOT(value));
-
-
+    slide.setRange(0,100);
     windowWidget = new QWidget();
     windowWidget->setLayout(gLayout);
     windowWidget->show();
+}
+int optionsWindow::vol(){
+    return slide.value();
+
 }

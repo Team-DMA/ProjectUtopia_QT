@@ -45,9 +45,11 @@ MainWindow::MainWindow(QWidget *parent)
 
 
     //background music
+    optionsWindow *optionWindow = new optionsWindow();
     QMediaPlayer *menuMusic = new QMediaPlayer();
     connect(menuMusic,SIGNAL(stateChanged(QMediaPlayer)),this,SLOT(play())); //soll bei state-änderung von neu anfangen
     menuMusic->setMedia(QUrl("qrc:/sounds/background.wav"));
+    menuMusic->setVolume(optionWindow->vol());
     menuMusic->play();
 
 }

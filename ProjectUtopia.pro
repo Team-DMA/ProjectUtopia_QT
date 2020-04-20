@@ -22,7 +22,6 @@ SOURCES += \
     mainmenue.cpp \
     mainwindow.cpp \
     optionswindow.cpp \
-    settings.cpp \
     startgamedialog.cpp
 
 HEADERS += \
@@ -30,7 +29,6 @@ HEADERS += \
     mainmenue.h \
     mainwindow.h \
     optionswindow.h \
-    settings.h \
     startgamedialog.h
 
 FORMS += \

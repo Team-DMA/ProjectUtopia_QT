@@ -19,8 +19,6 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    QString settingsFile = QApplication::applicationDirPath().left(1) + ":/settings.ini";
-
     //layout
     QGridLayout *gLayout = new QGridLayout(this);
 
@@ -51,6 +49,10 @@ MainWindow::MainWindow(QWidget *parent)
     menuMusic->setMedia(QUrl("qrc:/sounds/background.wav"));
     menuMusic->setVolume(optionWindow->vol());
     menuMusic->play();
+
+    //test
+    QSettings settings;
+    settings.setValue("LastLevel","3");
 
 }
 

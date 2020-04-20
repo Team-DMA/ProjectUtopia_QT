@@ -4,8 +4,6 @@
 #include <QLabel>
 #include <QProgressBar>
 
-#include "settings.h"
-
 class MainMenue: public QWidget
 {
       Q_OBJECT

@@ -12,6 +12,8 @@
 #include <QStyle>
 #include <QDesktopWidget>
 
+#include <QSettings>
+
 
 //Test
 
@@ -19,6 +21,9 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     MainWindow w;
+
+    //Settings
+    QSettings::setDefaultFormat(QSettings::IniFormat);
 
     //Background image; in styleshett/css geschrieben
     w.setStyleSheet("MainWindow {border-image: url(:/img/background.jpg) 0 0 0 0 stretch stretch;}");

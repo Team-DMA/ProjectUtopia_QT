@@ -2,7 +2,6 @@
 #define MAINGAME_H
 
 #include <QWidget>
-#include "settings.h"
 
 class mainGame : public QWidget
 {
@@ -11,7 +10,6 @@ public:
     explicit mainGame(QWidget *parent = nullptr);
     ~mainGame();
 private:
-    settings sSettings;
     qint8 lastLevel;
 signals:
 

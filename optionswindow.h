@@ -5,8 +5,6 @@
 #include <QSlider>
 #include <QProgressBar>
 
-#include "settings.h"
-
 class optionsWindow : public QWidget
 {
 public:

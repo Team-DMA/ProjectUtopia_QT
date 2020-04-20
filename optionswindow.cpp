@@ -29,6 +29,7 @@ optionsWindow::optionsWindow(QWidget *parent): QWidget(parent)
     connect(&slide,SIGNAL(valueChanged()),this,SLOT(vol()));
 
     slide.setRange(0,100);
+    slide.setValue(100);
     windowWidget = new QWidget();
     windowWidget->setLayout(gLayout);
     windowWidget->show();

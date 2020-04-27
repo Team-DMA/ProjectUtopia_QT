@@ -19,5 +19,4 @@ mainGame::mainGame(QWidget *parent) : QWidget(parent)
 
 mainGame::~mainGame()
 {
-
 }

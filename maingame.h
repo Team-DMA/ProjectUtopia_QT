@@ -9,6 +9,7 @@ class mainGame : public QWidget
 public:
     explicit mainGame(QWidget *parent = nullptr);
     ~mainGame();
+    int level ;
 private:
     qint8 lastLevel;
 signals:

@@ -2,6 +2,7 @@
 #include "mainwindow.h"
 #include "maingame.h"
 #include "mainmenue.h"
+#include "levelmenue.h"
 #include <QLabel>
 #include <QDialogButtonBox>
 #include <QPushButton>
@@ -74,12 +75,12 @@ void startGameDialog::continueGame()
         i=i+(double)(rand()%100/1000.0)*(double)(rand()%100/1000.0);
         }
         progress.setValue(32700);
-    mainGame *mainGameWindow = new mainGame();
-    mainGameWindow->setFixedSize(1600,900);
-    mainGameWindow->setParent(this);
-    mainGameWindow->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
-    mainGameWindow->show();
-    mainGameWindow->move(this->geometry().center() - mainGameWindow->rect().center());
+   levelMenue *mainlevelMenue = new levelMenue();
+    mainlevelMenue->setFixedSize(1600,900);
+    mainlevelMenue->setParent(this);
+    mainlevelMenue->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+    mainlevelMenue->show();
+    mainlevelMenue->move(this->geometry().center() - mainlevelMenue->rect().center());
 
 }
 void startGameDialog::startNewGame()

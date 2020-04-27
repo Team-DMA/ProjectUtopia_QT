@@ -3,7 +3,17 @@
 #include <QDebug>
 #include <QLabel>
 #include <QSettings>
-
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
+#include <QPushButton>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QMediaPlayer>
+#include <QGridLayout>
+#include <QWidget>
+#include "mainmenue.h"
+#include "startgamedialog.h"
+#include "optionswindow.h"
 mainGame::mainGame(QWidget *parent) : QWidget(parent)
 {
     qDebug() << "Main game started." << endl;

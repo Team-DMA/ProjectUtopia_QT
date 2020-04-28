@@ -10,6 +10,7 @@ class MainMenue: public QWidget
 public:
     explicit MainMenue(QWidget *parent = nullptr);
     QWidget *windowWidget;
+
 private slots:
     void startGame(void);
     void options(void);

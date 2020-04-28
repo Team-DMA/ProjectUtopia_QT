@@ -59,6 +59,5 @@ void MainMenue::options(void)
     optionsWindow *optionWindow = new optionsWindow();
     optionWindow->setParent(this);
     optionWindow->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
-    optionWindow->show();
     optionWindow->move(this->geometry().center() - optionWindow->rect().center());
 }

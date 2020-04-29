@@ -96,6 +96,6 @@ void startGameDialog::abortDialog()
     this->close();
     MainMenue *optionWindow = new MainMenue();
     optionWindow->setParent(this);
-    optionWindow->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+    optionWindow->setWindowFlags(Qt::Window | Qt::WindowSystemMenuHint);
     optionWindow->move(this->geometry().center() - optionWindow->rect().center());
 }

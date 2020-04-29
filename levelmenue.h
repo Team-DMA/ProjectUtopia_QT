@@ -10,6 +10,8 @@ class levelMenue : public QWidget
 {
     Q_OBJECT
 public:
+
+
     explicit levelMenue(QWidget *parent = nullptr);
     levelMenue(const levelMenue &);
     levelMenue &operator=(const levelMenue &);
@@ -17,20 +19,21 @@ public:
      QWidget *windowWidget;
 signals:
 
+private slots:
+     void Level_1(void);
+     void Level_2(void);
+     void Level_3(void);
+     void Level_4(void);
+     void Level_5(void);
+     void Level_6(void);
+     void Level_7(void);
+     void Level_8(void);
+     void Level_9(void);
+     void Level_10(void);
+     void abort_function(void);
 
 private:
     QSharedDataPointer<levelMenueData> data;
-    void Level1(void);
-    void Level2(void);
-    void Level3(void);
-    void Level4(void);
-    void Level5(void);
-    void Level6(void);
-    void Level7(void);
-    void Level8(void);
-    void Level9(void);
-    void Level10(void);
-    void abort(void);
 
 };
 

@@ -1,5 +1,4 @@
 #include "maingame.h"
-
 #include <QDebug>
 #include <QLabel>
 #include <QSettings>

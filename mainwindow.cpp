@@ -63,7 +63,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::enterGame(void)
 {
-
+    delete windowWidget;
+    delete ui;
     qDebug() << "Enter game." << endl;
     MainMenue *window = new MainMenue();
     window->setParent(this);

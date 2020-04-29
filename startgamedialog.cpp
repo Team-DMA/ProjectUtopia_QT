@@ -17,7 +17,6 @@ startGameDialog::startGameDialog(QWidget *parent) : QWidget(parent)
     QVBoxLayout *layout = new QVBoxLayout();
 
     QPushButton *continueButton = new QPushButton("&Spiel fortsetzen",this);
-    continueButton->setDefault(true);
     QPushButton *newGameButton = new QPushButton("&Neues Spiel",this);
     QPushButton *abortButton =new QPushButton("&Abbrechen",this);
 
@@ -75,11 +74,11 @@ void startGameDialog::continueGame()
         i=i+(double)(rand()%100/1000.0)*(double)(rand()%100/1000.0);
         }
         progress.setValue(32700);
+        this->close();
    levelMenue *mainlevelMenue = new levelMenue();
     mainlevelMenue->setFixedSize(1600,900);
     mainlevelMenue->setParent(this);
     mainlevelMenue->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
-    mainlevelMenue->show();
     mainlevelMenue->move(this->geometry().center() - mainlevelMenue->rect().center());
 
 }

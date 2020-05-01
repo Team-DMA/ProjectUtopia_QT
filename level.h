@@ -48,6 +48,7 @@ public:
     QString stage5Answer2;
     QString stage5Answer3;
     QString stage5Answer4;
+    void backToLevelMenue(void);
 
 };
 

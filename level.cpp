@@ -14,11 +14,15 @@
 #include "mainmenue.h"
 #include "startgamedialog.h"
 #include "optionswindow.h"
+#include "levelmenue.h"
 level::level(QWidget *parent) : QWidget(parent)
 {
 
+    //Zurückknopf
+    QPushButton *backToLevelMenue_button = new QPushButton("Zurück zum Levelmenü",this);
 
-
+    //Connections
+     connect(backToLevelMenue_button,SIGNAL(clicked()),this,SLOT(backToLevelMenue()));
     //Stage1
     QGridLayout *stage1Layout = new QGridLayout(this);
     QLabel *headTextLevelStage1 = new QLabel(this);
@@ -150,4 +154,19 @@ level::level(QWidget *parent) : QWidget(parent)
     levelStage5->setParent(this);
     levelStage5->setWindowFlags(Qt::Window | Qt::WindowSystemMenuHint);
     levelStage5->move(this->geometry().center() - levelStage5->rect().center());
+}
+
+void level::backToLevelMenue(void){
+    qDebug() << "Zurück zum Levelmenü" << endl;
+
+    delete levelStage1;
+    delete levelStage2;
+    delete levelStage3;
+    delete levelStage4;
+    delete levelStage5;
+    levelMenue *backToLevelMenue_ = new levelMenue();
+    backToLevelMenue_->setParent(this);
+    backToLevelMenue_->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+    backToLevelMenue_->show();
+    backToLevelMenue_->move(this->geometry().center() - backToLevelMenue_->rect().center());
 }

@@ -10,14 +10,21 @@ public:
     explicit mainGame(QWidget *parent = nullptr);
     ~mainGame();
     int level ;
-    QWidget *stage1;
-    QWidget *stage2;
-    QWidget *stage3;
-    QWidget *stage4;
-    QWidget *stage5;
+
     QSlider slide;
 private:
     qint8 lastLevel;
+    int failsLevel2;
+    int failsLevel3;
+    int failsLevel4;
+    int failsLevel5;
+    int failsLevel6;
+    int failsLevel7;
+    int failsLevel8;
+    int failsLevel9;
+    int failsLevel10;
+    int failsSum;
+
 signals:
 
 };

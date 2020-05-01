@@ -9,10 +9,11 @@ class mainGame : public QWidget
 public:
     explicit mainGame(QWidget *parent = nullptr);
     ~mainGame();
-    int level ;
+    int level_pointer ;
 
     QSlider slide;
 private:
+    void level1(void);
     qint8 lastLevel;
     int failsLevel2;
     int failsLevel3;

@@ -5,9 +5,14 @@
 #include <QString>
 class level :public QWidget
 {
+    Q_OBJECT
 public:
+
      explicit level(QWidget *parent = nullptr);
-    level();
+    level(const level &);
+ //   level &operator=(const level &);
+   // ~level();
+
     QWidget *levelStage1;
     QWidget *levelStage2;
     QWidget *levelStage3;
@@ -49,6 +54,9 @@ public:
     QString stage5Answer3;
     QString stage5Answer4;
     void backToLevelMenue(void);
+    //Bildschirmgröße
+    int x;
+    int y;
 
 };
 

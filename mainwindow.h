@@ -20,6 +20,7 @@ private:
 private slots:
     void enterGame();
     void options();
+    void calculatorOpen();
 
 public slots:
 

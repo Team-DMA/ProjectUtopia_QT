@@ -13,7 +13,7 @@
 #include "startgamedialog.h"
 #include "optionswindow.h"
 
-MainMenue::MainMenue(QWidget *parent)
+MainMenue::MainMenue(QWidget *parent, int volume)
     : QWidget(parent)
 {
     //layout
@@ -30,7 +30,12 @@ MainMenue::MainMenue(QWidget *parent)
     gLayout->addWidget(optionButton,1,1,Qt::AlignCenter);
 
 
-
+    //background music
+    QMediaPlayer *menuMusic = new QMediaPlayer();
+    menuMusic->setMedia(QUrl("qrc:/sounds/background.wav"));
+    menuMusic->setVolume(volume);
+    menuMusic->setParent(this);
+    menuMusic->play();
 
     connect(startButton,SIGNAL(clicked()),this,SLOT(startGame()));
     connect(optionButton,SIGNAL(clicked()),this,SLOT(options()));
@@ -43,6 +48,7 @@ MainMenue::MainMenue(QWidget *parent)
 void MainMenue::startGame(void)
 {
     windowWidget->close();
+
     qDebug() << "Started game." << endl;
     startGameDialog *window = new startGameDialog();
     window->setParent(this);
@@ -51,11 +57,10 @@ void MainMenue::startGame(void)
     window->move(this->geometry().center() - window->rect().center());
 }
 
-void MainMenue::options(void)
+void MainMenue::options()
 {
-
     windowWidget->close();
-
+    //this->MenuMusic->stop();
     optionsWindow *optionWindow = new optionsWindow();
     optionWindow->setParent(this);
     optionWindow->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);

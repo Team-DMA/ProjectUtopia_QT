@@ -36,8 +36,7 @@ optionsWindow::optionsWindow(QWidget *parent): QWidget(parent)
 }
 
 void optionsWindow::volu(void){
-    delete windowWidget;
-    MainWindow *Window = new MainWindow(slide.value());
+    MainMenue *Window = new MainMenue(nullptr,slide.value());
     Window->setParent(this);
     Window->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
     Window->move(this->geometry().center() - Window->rect().center());

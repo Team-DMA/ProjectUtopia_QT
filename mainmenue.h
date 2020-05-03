@@ -3,17 +3,18 @@
 #include <QWidget>
 #include <QLabel>
 #include <QProgressBar>
+#include <QMediaPlayer>
 
 class MainMenue: public QWidget
 {
       Q_OBJECT
 public:
-    explicit MainMenue(QWidget *parent = nullptr);
+    explicit MainMenue(QWidget *parent = nullptr,int volume=100);
     QWidget *windowWidget;
 
 private slots:
     void startGame(void);
-    void options(void);
+    void options();
 };
 
 #endif // MAINMENUE_H

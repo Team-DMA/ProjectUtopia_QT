@@ -94,7 +94,7 @@ levelMenue::~levelMenue()
 void levelMenue::Level_1(void){
     qDebug() << "Maingame Level1." << endl;
 
-    delete windowWidget;
+    windowWidget->close();
     mainGame *startmainGame = new mainGame();
     startmainGame->level_pointer=1;
     startmainGame->setParent(this);
@@ -105,7 +105,7 @@ void levelMenue::Level_1(void){
 void levelMenue::Level_2(void){
     qDebug() << "Maingame Level2." << endl;
 
-    delete windowWidget;
+    windowWidget->close();
     mainGame *startmainGame = new mainGame();
     startmainGame->level_pointer=2;
     startmainGame->setParent(this);
@@ -116,7 +116,7 @@ void levelMenue::Level_2(void){
 void levelMenue::Level_3(void){
     qDebug() << "Maingame Level3." << endl;
 
-    delete windowWidget;
+    windowWidget->close();
     mainGame *startmainGame = new mainGame();
     startmainGame->level_pointer=3;
     startmainGame->setParent(this);
@@ -127,7 +127,7 @@ void levelMenue::Level_3(void){
 void levelMenue::Level_4(void){
     qDebug() << "Maingame Level4." << endl;
 
-    delete windowWidget;
+    windowWidget->close();
     mainGame *startmainGame = new mainGame();
     startmainGame->level_pointer=4;
     startmainGame->setParent(this);
@@ -138,7 +138,7 @@ void levelMenue::Level_4(void){
 void levelMenue::Level_5(void){
     qDebug() << "Maingame Level5." << endl;
 
-    delete windowWidget;
+    windowWidget->close();
     mainGame *startmainGame = new mainGame();
     startmainGame->level_pointer=5;
     startmainGame->setParent(this);
@@ -149,7 +149,7 @@ void levelMenue::Level_5(void){
 void levelMenue::Level_6(void){
     qDebug() << "Maingame Level6." << endl;
 
-    delete windowWidget;
+    windowWidget->close();
     mainGame *startmainGame = new mainGame();
     startmainGame->level_pointer=6;
     startmainGame->setParent(this);
@@ -160,7 +160,7 @@ void levelMenue::Level_6(void){
 void levelMenue::Level_7(void){
     qDebug() << "Maingame Level7." << endl;
 
-    delete windowWidget;
+    windowWidget->close();
     mainGame *startmainGame = new mainGame();
     startmainGame->level_pointer=7;
     startmainGame->setParent(this);
@@ -171,7 +171,7 @@ void levelMenue::Level_7(void){
 void levelMenue::Level_8(void){
     qDebug() << "Maingame Level8." << endl;
 
-    delete windowWidget;
+    windowWidget->close();
     mainGame *startmainGame = new mainGame();
     startmainGame->level_pointer=8;
     startmainGame->setParent(this);
@@ -182,7 +182,7 @@ void levelMenue::Level_8(void){
 void levelMenue::Level_9(void){
     qDebug() << "Maingame Level9." << endl;
 
-    delete windowWidget;
+    windowWidget->close();
     mainGame *startmainGame = new mainGame();
     startmainGame->level_pointer=9;
     startmainGame->setParent(this);
@@ -193,7 +193,7 @@ void levelMenue::Level_9(void){
 void levelMenue::Level_10(void){
     qDebug() << "Maingame Level10." << endl;
 
-    delete windowWidget;
+    windowWidget->close();
     mainGame *startmainGame = new mainGame();
     startmainGame->level_pointer=10;
     startmainGame->setParent(this);
@@ -205,7 +205,7 @@ void levelMenue::abort_function(void){
     qDebug() << "Back to startgamedialog." << endl;
 
 
-    delete windowWidget;
+    windowWidget->close();
     startGameDialog *backstartGameDialog = new startGameDialog();
     backstartGameDialog->setParent(this);
     backstartGameDialog->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);

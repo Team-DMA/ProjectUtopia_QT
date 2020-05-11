@@ -53,6 +53,7 @@ void calculator::CreateCalcWidget()
     QPushButton* pushButtonEquals = new QPushButton("=");
     QPushButton* pushButtonSqrt =   new QPushButton(QString::fromUtf8("\u221A"));
     QPushButton* pushButtonInvert = new QPushButton(QString::fromUtf8("x\u207B\u00B9"));
+    QPushButton* pushButtonPi       = new QPushButton(QString::fromUtf8("\u03C0"));
 
     pushButton0->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     pushButton1->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
@@ -72,6 +73,7 @@ void calculator::CreateCalcWidget()
     pushButtonEquals->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     pushButtonInvert->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     pushButtonSqrt->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    pushButtonPi->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
     QString StyleSheetNumbers = "QPushButton { color: black; background-color: #FAFAFA; border: none; font: 17pt 'Microsoft YaHei UI'; outline: none;} QPushButton:hover { background-color: #D8D8D8; border-style: solid; border-width: 3px; border-color: #F2F2F2; } QPushButton:pressed { background-color: #A4A4A4; border-style: solid; border-width: 3px; border-color: #E6E6E6; }";
     QString StyleSheetSigns =   "QPushButton { color: black; background-color: #E6E6E6; border: none; font: 19pt 'Microsoft YaHei UI Light'; outline: none; } QPushButton:hover { background-color: #2ECCFA; border-style: solid; border-width: 3px; border-color: #58D3F7; } QPushButton:pressed { background-color: #81DAF5; border-style: solid; border-width: 3px; border-color: #A9E2F3; }";
@@ -93,6 +95,7 @@ void calculator::CreateCalcWidget()
     pushButtonEquals->setStyleSheet(StyleSheetSigns);
     pushButtonInvert->setStyleSheet(StyleSheetSigns);
     pushButtonSqrt->setStyleSheet(StyleSheetSigns);
+    pushButtonPi->setStyleSheet(StyleSheetNumbers);
 
     calcLayout = new QGridLayout(this);
     calcLayout->setSpacing(0);
@@ -113,7 +116,8 @@ void calculator::CreateCalcWidget()
     calcLayout->addWidget(pushButton3,      2, 2, 1, 1);
     calcLayout->addWidget(pushButtonMinus,  2, 3, 1, 1);
     calcLayout->addWidget(pushButtonEquals, 2, 4, 2, 1);
-    calcLayout->addWidget(pushButton0,      3, 0, 1, 2);
+    calcLayout->addWidget(pushButton0,      3, 0, 1, 1);
+    calcLayout->addWidget(pushButtonPi,     3, 1, 1, 1);
     calcLayout->addWidget(pushButtonDot,    3, 2, 1, 1);
     calcLayout->addWidget(pushButtonPlus,   3, 3, 1, 1);
 
@@ -138,6 +142,7 @@ void calculator::CreateCalcWidget()
     connect(pushButtonDot,    SIGNAL(clicked()), this, SLOT(DotClicked()));
     connect(pushButtonEquals, SIGNAL(clicked()), this, SLOT(Equals()));
     connect(pushButtonInvert, SIGNAL(clicked()), this, SLOT(UnFnClicked()));
+    connect(pushButtonPi,     SIGNAL(clicked()), this, SLOT(NumberClicked()));
 }
 
 void calculator::CreateDefaultCalcWidget()
@@ -206,7 +211,8 @@ void calculator::DotClicked()
     }
     else
     {
-        qLineEdit.setText('0' + '.' + qLineEdit.text());
+        QString _null = "0";
+        qLineEdit.setText(_null + '.' + qLineEdit.text());
     }
 }
 
@@ -217,19 +223,7 @@ void calculator::BinFnClicked()
         QString symbol = ((QPushButton*)sender())->text();
         if (qLineEdit.text().length())
         {
-            if (symbol == "x\u207F") // x^n
-            {
-
-                qLineEdit.setText(qLineEdit.text() + ", x\u207F n = ");
-            }
-            else if (symbol == "\u207F\u221A") // x^(1/n)
-            {
-                qLineEdit.setText(qLineEdit.text() + ", \u207F\u221Ax n = ");
-            }
-            else
-            {
-                qLineEdit.setText(qLineEdit.text() + symbol);
-            }
+            qLineEdit.setText(qLineEdit.text() + symbol);
             SetDigits(false);
         }
         else if (symbol == "-")

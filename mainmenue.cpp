@@ -8,6 +8,7 @@
 #include <QGridLayout>
 #include <QSettings>
 #include <QWidget>
+#include <QBoxLayout>
 #include <QDebug>
 #include "mainmenue.h"
 #include "startgamedialog.h"
@@ -17,17 +18,22 @@ MainMenue::MainMenue(QWidget *parent, int volume)
     : QWidget(parent)
 {
     //layout
-    QGridLayout *gLayout = new QGridLayout(this);
+    QVBoxLayout *vBoxLayout = new QVBoxLayout(this);
+    QHBoxLayout *hBoxLayout = new QHBoxLayout(this);
 
     QLabel *headText = new QLabel(this);
     headText->setText("Welcome to your point'n'click adventure");
     QPushButton *startButton = new QPushButton("&Start game",this);
     QPushButton *optionButton = new QPushButton("&Options",this);
 
-    gLayout->setAlignment(Qt::AlignCenter); //sollte eigentlich mittig sein
-    gLayout->addWidget(headText,0,0,Qt::AlignCenter);
-    gLayout->addWidget(startButton,1,0,Qt::AlignCenter);
-    gLayout->addWidget(optionButton,1,1,Qt::AlignCenter);
+    vBoxLayout->setAlignment(Qt::AlignCenter);
+    hBoxLayout->setAlignment(Qt::AlignCenter);
+
+    hBoxLayout->addWidget(startButton);
+    hBoxLayout->addWidget(optionButton);
+
+    vBoxLayout->addWidget(headText,0,Qt::AlignCenter);
+    vBoxLayout->addLayout(hBoxLayout);
 
 
     //background music
@@ -41,7 +47,7 @@ MainMenue::MainMenue(QWidget *parent, int volume)
     connect(optionButton,SIGNAL(clicked()),this,SLOT(options()));
 
     windowWidget = new QWidget();
-    windowWidget->setLayout(gLayout);
+    windowWidget->setLayout(vBoxLayout);
     windowWidget->show();
 }
 

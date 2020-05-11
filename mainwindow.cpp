@@ -23,43 +23,42 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     //layout
-    QGridLayout *gLayout = new QGridLayout(this);
+    QVBoxLayout *vBoxLayout = new QVBoxLayout(this);
+    QHBoxLayout *hBoxLayout = new QHBoxLayout(this);
+    vBoxLayout->setAlignment(Qt::AlignCenter);
+    hBoxLayout->setAlignment(Qt::AlignCenter);
 
-    QLabel *headText = new QLabel(this);
+    QLabel *headText = new QLabel();
     headText->setText("Welcome to your point'n'click adventure");
-    QPushButton *enterGame = new QPushButton("&Enter Game",this);
-    //Test
-    QPushButton *calculatorButton = new QPushButton("&Taschenrechner",this);
+    QPushButton *enterGame = new QPushButton("&Enter Game");
+    QPushButton *calculatorButton = new QPushButton("&Taschenrechner");
+    QPushButton *endGame = new QPushButton("&Spiel beenden");
 
-    gLayout->setSpacing(0);
-    gLayout->setContentsMargins(0, 0, 0, 0);
-    gLayout->setAlignment(Qt::AlignCenter); //sollte eigentlich mittig sein
-    gLayout->addWidget(headText,0,1,Qt::AlignCenter);
-    gLayout->addWidget(enterGame,1,0,Qt::AlignCenter);
-    gLayout->addWidget(calculatorButton,1,1,Qt::AlignCenter);
+    hBoxLayout->addWidget(enterGame);
+    hBoxLayout->addWidget(calculatorButton);
+    hBoxLayout->addWidget(endGame);
+
+    vBoxLayout->addWidget(headText,0,Qt::AlignCenter);
+    vBoxLayout->addLayout(hBoxLayout);
 
     //design
-    headText->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    enterGame->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    calculatorButton->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    headText->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+    enterGame->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+    calculatorButton->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+    endGame->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
 
     QString StyleSheetDefault = "QPushButton { color: black; background-color: #FAFAFA; border: none; font: 17pt 'Microsoft YaHei UI'; outline: none;} QPushButton:hover { background-color: #D8D8D8; border-style: solid; border-width: 3px; border-color: #F2F2F2; } QPushButton:pressed { background-color: #A4A4A4; border-style: solid; border-width: 3px; border-color: #E6E6E6; }";
 
     enterGame->setStyleSheet(StyleSheetDefault);
     calculatorButton->setStyleSheet(StyleSheetDefault);
-
-
-    MainMenue *window = new MainMenue(nullptr,100);
-    window->setParent(this);
-    window->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
-    window->move(this->geometry().center() - window->rect().center());
-    window->hide();
+    endGame->setStyleSheet(StyleSheetDefault);
 
     connect(enterGame,SIGNAL(clicked()),this,SLOT(enterGame()));
     connect(calculatorButton,SIGNAL(clicked()),this,SLOT(calculatorOpen()));
+    connect(endGame,SIGNAL(clicked()),this,SLOT(endTheGame()));
 
     windowWidget = new QWidget();
-    windowWidget->setLayout(gLayout);
+    windowWidget->setLayout(vBoxLayout);
     setCentralWidget(windowWidget);
 
     //test
@@ -76,10 +75,15 @@ MainWindow::~MainWindow()
 
 void MainWindow::enterGame()
 {
-    this->close();
-    this->window()->show();
     qDebug() << "Enter game." << endl;
 
+    MainMenue *window = new MainMenue(nullptr,100);
+    window->setParent(this);
+    window->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+    window->move(this->geometry().center() - window->rect().center());
+    window->hide();
+
+    this->close();
 }
 
 void MainWindow::calculatorOpen()
@@ -87,4 +91,9 @@ void MainWindow::calculatorOpen()
     calculator *calculatorWindow = new calculator();
     calculatorWindow->activateWindow();
     this->close();
+}
+
+void MainWindow::endTheGame()
+{
+    qApp->closeAllWindows();
 }

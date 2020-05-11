@@ -21,6 +21,7 @@ private:
 private slots:
     void enterGame();
     void calculatorOpen();
+    void endTheGame();
 
 public slots:
 

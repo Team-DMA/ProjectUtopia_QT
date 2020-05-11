@@ -13,6 +13,8 @@
 #include "startgamedialog.h"
 #include "optionswindow.h"
 
+#include <QGraphicsDropShadowEffect>
+
 //Test
 #include "calculator.h"
 
@@ -30,6 +32,13 @@ MainWindow::MainWindow(QWidget *parent)
 
     QLabel *headText = new QLabel();
     headText->setText("Welcome to your point'n'click adventure");
+    headText->setStyleSheet("font: 21pt 'Microsoft YaHei UI'; color: white;");
+    QGraphicsDropShadowEffect* effect = new QGraphicsDropShadowEffect(this);
+    effect->setOffset(0, 0);
+    effect->setBlurRadius(5.0);
+    effect->setColor(Qt::darkBlue);
+    headText->setGraphicsEffect(effect);
+
     QPushButton *enterGame = new QPushButton("&Enter Game");
     QPushButton *calculatorButton = new QPushButton("&Taschenrechner");
     QPushButton *endGame = new QPushButton("&Spiel beenden");

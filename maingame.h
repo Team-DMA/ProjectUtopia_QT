@@ -7,9 +7,8 @@ class mainGame : public QWidget
 {
     Q_OBJECT
 public:
-    explicit mainGame(QWidget *parent = nullptr);
+    explicit mainGame(int,QWidget *parent = nullptr);
     ~mainGame();
-    int level_pointer ;
 
     QSlider slide;
 private:

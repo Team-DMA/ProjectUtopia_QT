@@ -14,7 +14,7 @@
 #include "startgamedialog.h"
 #include "optionswindow.h"
 #include "level.h"
-mainGame::mainGame(QWidget *parent) : QWidget(parent)
+mainGame::mainGame(int level_pointer,QWidget *parent) : QWidget(parent)
 {
     qDebug() << "Main game started." << endl;
     qDebug() << level_pointer<<endl;

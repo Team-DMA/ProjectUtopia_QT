@@ -13,10 +13,7 @@ public:
     QSlider slide;
 private:
     void level1Stage1(void);
-    void level1Stage2(void);
-    void level1Stage3(void);
-    void level1Stage4(void);
-    void level1Stage5(void);
+
 
     qint8 lastLevel;
     int failsLevel2;
@@ -74,7 +71,11 @@ private:
 
     int x;
     int y;
-
+private slots:
+    void level1Stage2(void);
+    void level1Stage3(void);
+    void level1Stage4(void);
+    void level1Stage5(void);
 signals:
 
 };

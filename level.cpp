@@ -23,7 +23,7 @@ level::level(QWidget *parent) : QWidget(parent)
     //Zurückknopf
     QPushButton *backToLevelMenue_button = new QPushButton("Zurück zum Levelmenü",this);
 
-    //Connections
+    //Connection
      connect(backToLevelMenue_button,SIGNAL(clicked()),this,SLOT(backToLevelMenue()));
     //Stage1
     QGridLayout *stage1Layout = new QGridLayout(this);

@@ -12,8 +12,8 @@ public:
 
     QSlider slide;
 private:
-    void level1Stage1(void);
 
+    QWidget *mothership;
 
     qint8 lastLevel;
     int failsLevel2;
@@ -28,55 +28,134 @@ private:
     int failsSum;
 
 
-    QWidget *levelStage1;
-    QWidget *levelStage2;
-    QWidget *levelStage3;
-    QWidget *levelStage4;
-    QWidget *levelStage5;
-    //Stage1
-    QString stage1Title;
-    QString stage1Question;
-    QString stage1Answer1;
-    QString stage1Answer2;
-    QString stage1Answer3;
-    QString stage1Answer4;
-    //Stage2
-    QString stage2Title;
-    QString stage2Question;
-    QString stage2Answer1;
-    QString stage2Answer2;
-    QString stage2Answer3;
-    QString stage2Answer4;
-    //Stage3
-    QString stage3Title;
-    QString stage3Question;
-    QString stage3Answer1;
-    QString stage3Answer2;
-    QString stage3Answer3;
-    QString stage3Answer4;
-    //Stage4
-    QString stage4Title;
-    QString stage4Question;
-    QString stage4Answer1;
-    QString stage4Answer2;
-    QString stage4Answer3;
-    QString stage4Answer4;
-    //Stage5
-    QString stage5Title;
-    QString stage5Question;
-    QString stage5Answer1;
-    QString stage5Answer2;
-    QString stage5Answer3;
-    QString stage5Answer4;
+    QWidget *Level1Stage1;
+    QWidget *Level1Stage2;
+    QWidget *Level1Stage3;
+    QWidget *Level1Stage4;
+    QWidget *Level1Stage5;
 
-    int x;
-    int y;
+    QWidget *Level2Stage1;
+    QWidget *Level2Stage2;
+    QWidget *Level2Stage3;
+    QWidget *Level2Stage4;
+    QWidget *Level2Stage5;
+
+    QWidget *Level3Stage1;
+    QWidget *Level3Stage2;
+    QWidget *Level3Stage3;
+    QWidget *Level3Stage4;
+    QWidget *Level3Stage5;
+
+    QWidget *Level4Stage1;
+    QWidget *Level4Stage2;
+    QWidget *Level4Stage3;
+    QWidget *Level4Stage4;
+    QWidget *Level4Stage5;
+
+    QWidget *Level5Stage1;
+    QWidget *Level5Stage2;
+    QWidget *Level5Stage3;
+    QWidget *Level5Stage4;
+    QWidget *Level5Stage5;
+
+    QWidget *Level6Stage1;
+    QWidget *Level6Stage2;
+    QWidget *Level6Stage3;
+    QWidget *Level6Stage4;
+    QWidget *Level6Stage5;
+
+    QWidget *Level7Stage1;
+    QWidget *Level7Stage2;
+    QWidget *Level7Stage3;
+    QWidget *Level7Stage4;
+    QWidget *Level7Stage5;
+
+    QWidget *Level8Stage1;
+    QWidget *Level8Stage2;
+    QWidget *Level8Stage3;
+    QWidget *Level8Stage4;
+    QWidget *Level8Stage5;
+
+    QWidget *Level9Stage1;
+    QWidget *Level9Stage2;
+    QWidget *Level9Stage3;
+    QWidget *Level9Stage4;
+    QWidget *Level9Stage5;
+
+    QWidget *Level10Stage1;
+    QWidget *Level10Stage2;
+    QWidget *Level10Stage3;
+    QWidget *Level10Stage4;
+    QWidget *Level10Stage5;
+
+
+    const int x=1600;
+    const int y=900;
+
+
+    void level1Stage1();
+    void level2Stage1();
+    void level3Stage1();
+    void level4Stage1();
+    void level5Stage1();
+    void level6Stage1();
+    void level7Stage1();
+    void level8Stage1();
+    void level9Stage1();
+    void level10Stage1();
 private slots:
-    void level1Stage2(void);
-    void level1Stage3(void);
-    void level1Stage4(void);
-    void level1Stage5(void);
-signals:
+    void level1Stage2();
+    void level1Stage3();
+    void level1Stage4();
+    void level1Stage5();
+
+    void level2Stage2();
+    void level2Stage3();
+    void level2Stage4();
+    void level2Stage5();
+
+    void level3Stage2();
+    void level3Stage3();
+    void level3Stage4();
+    void level3Stage5();
+
+    void level4Stage2();
+    void level4Stage3();
+    void level4Stage4();
+    void level4Stage5();
+
+    void level5Stage2();
+    void level5Stage3();
+    void level5Stage4();
+    void level5Stage5();
+
+    void level6Stage2();
+    void level6Stage3();
+    void level6Stage4();
+    void level6Stage5();
+
+    void level7Stage2();
+    void level7Stage3();
+    void level7Stage4();
+    void level7Stage5();
+
+    void level8Stage2();
+    void level8Stage3();
+    void level8Stage4();
+    void level8Stage5();
+
+    void level9Stage2();
+    void level9Stage3();
+    void level9Stage4();
+    void level9Stage5();
+
+    void level10Stage2();
+    void level10Stage3();
+    void level10Stage4();
+    void level10Stage5();
+
+
+     void backToLevelMenue(void);
 
 };
 

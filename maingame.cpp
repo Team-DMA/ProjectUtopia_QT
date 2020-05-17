@@ -2086,17 +2086,30 @@ void mainGame::fail(){
       failLayout->addWidget(backToLevelMenue_button,5,4,Qt::AlignCenter);
 }
 void mainGame::win(){
-    QGridLayout *winLayout = new QGridLayout(this);
-    winn=new QWidget();
-    winn->setLayout(winLayout);
-    winn->setFixedSize(x,y);
-    winn->setParent(mothership);
-    //Zurückknopf
-    QPushButton *backToLevelMenue_button = new QPushButton("Zurück zum Levelmenü",this);
+    qDebug()<<"win"<<endl;
+        QGridLayout *winLayout = new QGridLayout(this);
+        winLayout->setAlignment(Qt::AlignCenter);
+        winn=new QWidget();
+        winn->setLayout(winLayout);
+        winn->setFixedSize(x,y);
+        winn->setParent(mothership);
+        winn->setWindowFlags(Qt::Window);
+        winn->move(this->geometry().center() - winn->rect().center());
+        QPixmap bkgnd(":/img/you-win.jpg");
+            bkgnd = bkgnd.scaled(this->size()/*, Qt::IgnoreAspectRatio*/);
+            QPalette palette;
+            palette.setBrush(QPalette::Background, bkgnd);
+            winn->setPalette(palette);
+        winn->show();
+        winLayout->addWidget(winn,0,0,Qt::AlignCenter);
+        QPushButton *backToLevelMenue_button = new QPushButton("Zurück zum Levelmenü",this);
+        winLayout->addWidget(backToLevelMenue_button);
+        //Zurückknopf
 
-    //Connection
-     connect(backToLevelMenue_button,SIGNAL(clicked()),mothership,SLOT(backToLevelMenue()));
-      winLayout->addWidget(backToLevelMenue_button,5,4,Qt::AlignCenter);
+
+        //Connection
+         connect(backToLevelMenue_button,SIGNAL(clicked()),mothership,SLOT(backToLevelMenue()));
+          winLayout->addWidget(backToLevelMenue_button,5,4,Qt::AlignCenter);
 }
 
 void mainGame::calculatorOpen()

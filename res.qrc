@@ -4,5 +4,6 @@
     </qresource>
     <qresource prefix="/img">
         <file>background.jpg</file>
+        <file>you-win.jpg</file>
     </qresource>
 </RCC>

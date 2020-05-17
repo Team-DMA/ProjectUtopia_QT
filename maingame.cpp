@@ -21,6 +21,7 @@ mainGame::mainGame(int level_pointer,QWidget *parent) : QWidget(parent)
     qDebug() << level_pointer<<endl;
     QSettings settings;
     mothership=this;
+
     //lastLevel = settings.value("LastLevel").toInt();
     switch (level_pointer) {
     case 1 :
@@ -78,124 +79,111 @@ mainGame::~mainGame()
 void mainGame::level1Stage1(){
       qDebug() << "Level1" << endl;
 
-      //Bildschirmgröße
-      //Zurückknopf
-      //QPushButton *backToLevelMenue_button = new QPushButton("Zurück zum Levelmenü",this);
-
-      //Connections
-      //connect(backToLevelMenue_button,SIGNAL(clicked()),this,SLOT(backToLevelMenue()));
       //Stage1
-      QGridLayout *stage1Layout = new QGridLayout(this);
-      QLabel *headTextLevelStage1 = new QLabel(this);
-      QLabel *stage1Question_label = new QLabel(this);
+      QGridLayout *stageLayout = new QGridLayout(this);;
 
-      stage1Question_label->setText("Wie lautet die Lösung für x, wenn gilt (10*3)/5=(4+2*4)/x");
-      headTextLevelStage1->setText("Willkommen im ersten Level. Hier ist die erste Frage:");
-      QPushButton *stage1Answer1_button = new QPushButton("2",this);
-      QPushButton *stage1Answer2_button = new QPushButton("4",this);
-      QPushButton *stage1Answer3_button = new QPushButton("6",this);
-      QPushButton *stage1Answer4_button = new QPushButton("10",this);
+      QLabel *Question_label = new QLabel(this);
+      Question_label->setText("Wie lautet die Lösung für x, wenn gilt (10*3)/5=(4+2*4)/x");
+      QLabel *headText = new QLabel(this);
+      headText->setText("Willkommen im ersten Level. Hier ist die erste Frage:");
 
-      stage1Layout->setAlignment(Qt::AlignCenter);
-      stage1Layout->addWidget(headTextLevelStage1,0,0,Qt::AlignCenter);
-      stage1Layout->addWidget(stage1Question_label,1,0,Qt::AlignCenter);
-      stage1Layout->addWidget(stage1Answer1_button,2,0,Qt::AlignCenter);
-      stage1Layout->addWidget(stage1Answer2_button,2,1,Qt::AlignCenter);
-      stage1Layout->addWidget(stage1Answer3_button,3,0,Qt::AlignCenter);
-      stage1Layout->addWidget(stage1Answer4_button,3,1,Qt::AlignCenter);
+      QPushButton *Answer1_button = new QPushButton("2",this);
+      QPushButton *Answer2_button = new QPushButton("4",this);
+      QPushButton *Answer3_button = new QPushButton("6",this);
+      QPushButton *Answer4_button = new QPushButton("10",this);
 
-      Level1Stage1 = new QWidget();
-      Level1Stage1->setParent(this);
-      Level1Stage1->setLayout(stage1Layout);
-      Level1Stage1->setFixedSize(x,y);
-      Level1Stage1->setParent(mothership);
-      Level1Stage1->setWindowFlags(Qt::Window | Qt::WindowSystemMenuHint);
-      Level1Stage1->move(this->geometry().center() - Level1Stage1->rect().center());
-      Level1Stage1->show();
-      //Zurückknopf
       QPushButton *backToLevelMenue_button = new QPushButton("Zurück zum Levelmenü",this);
 
+      stageLayout->setAlignment(Qt::AlignCenter);
+      stageLayout->addWidget(headText,0,0,Qt::AlignCenter);
+      stageLayout->addWidget(Question_label,1,0,Qt::AlignCenter);
+      stageLayout->addWidget(Answer1_button,2,0,Qt::AlignCenter);
+      stageLayout->addWidget(Answer2_button,2,1,Qt::AlignCenter);
+      stageLayout->addWidget(Answer3_button,3,0,Qt::AlignCenter);
+      stageLayout->addWidget(Answer4_button,3,1,Qt::AlignCenter);
+
+      stageLayout->addWidget(backToLevelMenue_button,5,4,Qt::AlignCenter);
+
+      this->setLayout(stageLayout);
+      this->setFixedSize(x,y);
+      this->move(parentWidget()->geometry().center() - this->rect().center());
+      this->show();
+
       //Connection
-       connect(backToLevelMenue_button,SIGNAL(clicked()),mothership,SLOT(backToLevelMenue()));
-        stage1Layout->addWidget(backToLevelMenue_button,5,4,Qt::AlignCenter);
-      connect(stage1Answer1_button,SIGNAL(clicked()),mothership,SLOT(level1Stage2()));
+      connect(backToLevelMenue_button,SIGNAL(clicked()),mothership,SLOT(backToLevelMenue()));
+      connect(Answer1_button,SIGNAL(clicked()),mothership,SLOT(level1Stage2()));
 }
 void mainGame::level1Stage2(){
-       Level1Stage1->hide();
+
+    qDeleteAll(this->children());
+    delete this->layout();
+
     //Stage2
-      QGridLayout *stage2Layout = new QGridLayout(this);
-      QLabel *headTextLevelStage2 = new QLabel(this);
-      QLabel *stage2Question_label = new QLabel(this);
+      QGridLayout *stageLayout = new QGridLayout(this);
 
-      stage2Question_label->setText("stage2Question");
-      headTextLevelStage2->setText("stage2Title");
-      QPushButton *stage2Answer1_button = new QPushButton("stage2Answer1",this);
-      QPushButton *stage2Answer2_button = new QPushButton("stage2Answer2",this);
-      QPushButton *stage2Answer3_button = new QPushButton("stage2Answer3",this);
-      QPushButton *stage2Answer4_button = new QPushButton("stage2Answer4",this);
+      QLabel *Question_label = new QLabel(this);
+      Question_label->setText("stage2Question");
+      QLabel *headText = new QLabel(this);
+      headText->setText("stage2Title");
+      QPushButton *Answer1_button = new QPushButton("stage2Answer1",this);
+      QPushButton *Answer2_button = new QPushButton("stage2Answer2",this);
+      QPushButton *Answer3_button = new QPushButton("stage2Answer3",this);
+      QPushButton *Answer4_button = new QPushButton("stage2Answer4",this);
 
-      stage2Layout->setAlignment(Qt::AlignCenter);
-      stage2Layout->addWidget(headTextLevelStage2,0,0,Qt::AlignCenter);
-      stage2Layout->addWidget(stage2Question_label,1,0,Qt::AlignCenter);
-      stage2Layout->addWidget(stage2Answer1_button,2,0,Qt::AlignCenter);
-      stage2Layout->addWidget(stage2Answer2_button,2,1,Qt::AlignCenter);
-      stage2Layout->addWidget(stage2Answer3_button,3,0,Qt::AlignCenter);
-      stage2Layout->addWidget(stage2Answer4_button,3,1,Qt::AlignCenter);
-
-      Level1Stage2 = new QWidget();
-      Level1Stage2->setLayout(stage2Layout);
-      Level1Stage2->setFixedSize(x,y);
-      Level1Stage2->setParent(mothership);
-      Level1Stage2->setWindowFlags(Qt::Window | Qt::WindowSystemMenuHint);
-      Level1Stage2->move(this->geometry().center() - Level1Stage2->rect().center());
-      Level1Stage2->show();
       QPushButton *backToLevelMenue_button = new QPushButton("Zurück zum Levelmenü",this);
 
+      stageLayout->setAlignment(Qt::AlignCenter);
+      stageLayout->addWidget(headText,0,0,Qt::AlignCenter);
+      stageLayout->addWidget(Question_label,1,0,Qt::AlignCenter);
+      stageLayout->addWidget(Answer1_button,2,0,Qt::AlignCenter);
+      stageLayout->addWidget(Answer2_button,2,1,Qt::AlignCenter);
+      stageLayout->addWidget(Answer3_button,3,0,Qt::AlignCenter);
+      stageLayout->addWidget(Answer4_button,3,1,Qt::AlignCenter);
+
+      stageLayout->addWidget(backToLevelMenue_button,5,4,Qt::AlignCenter);
+
+      this->setLayout(stageLayout);
+      this->show();
       //Connection
        connect(backToLevelMenue_button,SIGNAL(clicked()),mothership,SLOT(backToLevelMenue()));
-        stage2Layout->addWidget(backToLevelMenue_button,5,4,Qt::AlignCenter);
-      connect(stage2Answer1_button,SIGNAL(clicked()),mothership,SLOT(level1Stage3()));
+      connect(Answer1_button,SIGNAL(clicked()),mothership,SLOT(level1Stage3()));
 }
-void mainGame::level1Stage3(){
-          Level1Stage2->hide();
+void mainGame::level1Stage3()
+{
+      qDeleteAll(this->children());
+      delete this->layout();
 
       //Stage3
-      QGridLayout *stage3Layout = new QGridLayout(this);
-      QLabel *headTextLevelStage3 = new QLabel(this);
-      QLabel *stage3Question_label = new QLabel(this);
+      QGridLayout *stageLayout = new QGridLayout(this);
+      QLabel *headText = new QLabel(this);
+      QLabel *Question_label = new QLabel(this);
 
-      stage3Question_label->setText("stage3Question");
-      headTextLevelStage3->setText("stage3Title");
-      QPushButton *stage3Answer1_button = new QPushButton("stage3Answer1",this);
-      QPushButton *stage3Answer2_button = new QPushButton("stage3Answer2",this);
-      QPushButton *stage3Answer3_button = new QPushButton("stage3Answer3",this);
-      QPushButton *stage3Answer4_button = new QPushButton("stage3Answer4",this);
+      Question_label->setText("stage3Question");
+      headText->setText("stage3Title");
+      QPushButton *Answer1_button = new QPushButton("stage3Answer1",this);
+      QPushButton *Answer2_button = new QPushButton("stage3Answer2",this);
+      QPushButton *Answer3_button = new QPushButton("stage3Answer3",this);
+      QPushButton *Answer4_button = new QPushButton("stage3Answer4",this);
 
-      stage3Layout->setAlignment(Qt::AlignCenter);
-      stage3Layout->addWidget(headTextLevelStage3,0,0,Qt::AlignCenter);
-      stage3Layout->addWidget(stage3Question_label,1,0,Qt::AlignCenter);
-      stage3Layout->addWidget(stage3Answer1_button,2,0,Qt::AlignCenter);
-      stage3Layout->addWidget(stage3Answer2_button,2,1,Qt::AlignCenter);
-      stage3Layout->addWidget(stage3Answer3_button,3,0,Qt::AlignCenter);
-      stage3Layout->addWidget(stage3Answer4_button,3,1,Qt::AlignCenter);
-
-      Level1Stage3 = new QWidget();
-      Level1Stage3->setLayout(stage3Layout);
-      Level1Stage3->setFixedSize(x,y);
-      Level1Stage3->setParent(mothership);
-      Level1Stage3->setWindowFlags(Qt::Window | Qt::WindowSystemMenuHint);
-      Level1Stage3->move(this->geometry().center() - Level1Stage3->rect().center());
-      Level1Stage3->show();
-      //Zurückknopf
       QPushButton *backToLevelMenue_button = new QPushButton("Zurück zum Levelmenü",this);
 
+      stageLayout->setAlignment(Qt::AlignCenter);
+      stageLayout->addWidget(headText,0,0,Qt::AlignCenter);
+      stageLayout->addWidget(Question_label,1,0,Qt::AlignCenter);
+      stageLayout->addWidget(Answer1_button,2,0,Qt::AlignCenter);
+      stageLayout->addWidget(Answer2_button,2,1,Qt::AlignCenter);
+      stageLayout->addWidget(Answer3_button,3,0,Qt::AlignCenter);
+      stageLayout->addWidget(Answer4_button,3,1,Qt::AlignCenter);
+
+      stageLayout->addWidget(backToLevelMenue_button,5,4,Qt::AlignCenter);
+
       //Connection
-       connect(backToLevelMenue_button,SIGNAL(clicked()),mothership,SLOT(backToLevelMenue()));
-        stage3Layout->addWidget(backToLevelMenue_button,5,4,Qt::AlignCenter);
-      connect(stage3Answer1_button,SIGNAL(clicked()),mothership,SLOT(level1Stage4()));
+       connect(backToLevelMenue_button,SIGNAL(clicked()),mothership,SLOT(backToLevelMenue()));  
+       connect(Answer1_button,SIGNAL(clicked()),mothership,SLOT(level1Stage4()));
       }
 void mainGame::level1Stage4(){
-          Level1Stage3->hide();
+    qDeleteAll(this->children());
+    delete this->layout();
 
       //Stage4
       QGridLayout *stage4Layout = new QGridLayout(this);
@@ -2031,17 +2019,14 @@ void mainGame::level10Stage5(){
         stage5Layout->addWidget(backToLevelMenue_button,5,4,Qt::AlignCenter);
 
 }
-void mainGame::backToLevelMenue(void){
+void mainGame::backToLevelMenue(void)
+{
     qDebug() << "Zurück zum Levelmenü" << endl;
 
-    delete Level1Stage1;
-    delete Level1Stage2;
-    delete Level1Stage3;
-    delete Level1Stage4;
-    delete Level1Stage5;
-    levelMenue *backToLevelMenue_ = new levelMenue();
-    backToLevelMenue_->setParent(this);
-    backToLevelMenue_->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
-    backToLevelMenue_->show();
-    backToLevelMenue_->move(this->geometry().center() - backToLevelMenue_->rect().center());
+    this->close();
+
+    QWidget *parent = this->parentWidget();
+    parent->show();
+    parent->move(this->geometry().center() - parent->rect().center());
+
 }

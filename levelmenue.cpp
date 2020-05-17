@@ -30,7 +30,7 @@ levelMenue::levelMenue(QWidget *parent) : QWidget(parent), data(new levelMenueDa
     QPushButton *Level2 = new QPushButton("Level2",this);
     QPushButton *Level3 = new QPushButton("Level3",this);
     QPushButton *Level4 = new QPushButton("Level4",this);
-    QPushButton *Level5= new QPushButton("Level5",this);
+    QPushButton *Level5 = new QPushButton("Level5",this);
     QPushButton *Level6 = new QPushButton("Level6",this);
     QPushButton *Level7 = new QPushButton("Level7",this);
     QPushButton *Level8 = new QPushButton("Level8",this);
@@ -52,6 +52,8 @@ levelMenue::levelMenue(QWidget *parent) : QWidget(parent), data(new levelMenueDa
     gLayout->addWidget(Level10,2,4,Qt::AlignCenter);
     gLayout->addWidget(abort,4,4,Qt::AlignCenter);
 
+
+
     connect(Level1,SIGNAL(clicked()),this,SLOT(Level_1()));
     connect(Level2,SIGNAL(clicked()),this,SLOT(Level_2()));
     connect(Level3,SIGNAL(clicked()),this,SLOT(Level_3()));
@@ -64,6 +66,7 @@ levelMenue::levelMenue(QWidget *parent) : QWidget(parent), data(new levelMenueDa
     connect(Level10,SIGNAL(clicked()),this,SLOT(Level_10()));
     connect(abort,SIGNAL(clicked()),this,SLOT(abort_function()));
 
+
     windowWidget = new QWidget();
     windowWidget->setLayout(gLayout);
     windowWidget->setFixedSize(1600,900);
@@ -74,10 +77,10 @@ levelMenue::levelMenue(QWidget *parent) : QWidget(parent), data(new levelMenueDa
 
 }
 
-levelMenue::levelMenue(const levelMenue &rhs) : data(rhs.data)
+/*levelMenue::levelMenue(const levelMenue &rhs) : data(rhs.data)
 {
 
-}
+}*/
 
 levelMenue &levelMenue::operator=(const levelMenue &rhs)
 {
@@ -94,12 +97,15 @@ levelMenue::~levelMenue()
 void levelMenue::Level_1(void){
     qDebug() << "Maingame Level1." << endl;
 
-    windowWidget->close();
-    mainGame *startmainGame = new mainGame(1);
-    startmainGame->setParent(this);
+    mainGame *startmainGame = new mainGame(1,this);
+    startmainGame->setParent(windowWidget);
     startmainGame->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
     startmainGame->show();
     startmainGame->move(this->geometry().center() - startmainGame->rect().center());
+    startmainGame->activateWindow();
+
+    windowWidget->hide();
+    this->hide();
 }
 void levelMenue::Level_2(void){
     qDebug() << "Maingame Level2." << endl;

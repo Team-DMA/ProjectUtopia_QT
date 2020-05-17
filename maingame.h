@@ -2,6 +2,9 @@
 #define MAINGAME_H
 #include <QSlider>
 #include <QWidget>
+#include <QPushButton>
+#include <QLabel>
+#include <QGridLayout>
 
 class mainGame : public QWidget
 {
@@ -27,10 +30,6 @@ private:
     int failsLevel10;
     int failsSum;
 
-
-    QWidget *Level1Stage1;
-    QWidget *Level1Stage2;
-    QWidget *Level1Stage3;
     QWidget *Level1Stage4;
     QWidget *Level1Stage5;
 

@@ -17,7 +17,6 @@ class optionsWindow : public QWidget
 public:
 
      optionsWindow(QWidget *parent = nullptr);
-     QWidget *windowWidget;
      QSlider slide;
      QLCDNumber *label = new QLCDNumber(this);
 

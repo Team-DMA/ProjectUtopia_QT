@@ -14,8 +14,6 @@ calculator::calculator(QWidget *parent) : QWidget(parent)
     CreateCalcWidget();
     CreateDefaultCalcWidget();
     Spawn();
-
-    this->show();
 }
 
 calculator::~calculator()

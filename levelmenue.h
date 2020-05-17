@@ -25,11 +25,6 @@ private slots:
      void Level_3(void);
      void Level_4(void);
      void Level_5(void);
-     void Level_6(void);
-     void Level_7(void);
-     void Level_8(void);
-     void Level_9(void);
-     void Level_10(void);
      void abort_function(void);
 
 private:

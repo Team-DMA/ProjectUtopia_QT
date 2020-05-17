@@ -11,7 +11,8 @@
 #include <QAction>
 #include <QStyle>
 #include <QDesktopWidget>
-
+#include <QRect>
+#include <QScreen>
 #include <QSettings>
 
 //Test

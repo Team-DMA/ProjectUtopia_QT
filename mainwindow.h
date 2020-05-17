@@ -20,7 +20,7 @@ private:
     Ui::MainWindow *ui;
 private slots:
     void enterGame();
-    void calculatorOpen();
+    void optionsOpen();
     void endTheGame();
 
 public slots:

@@ -26,23 +26,29 @@ optionsWindow::optionsWindow(QWidget *parent): QWidget(parent)
     gLayout->addWidget(label,2,0,Qt::AlignCenter);
     slide.setRange(0,100);
     slide.setValue(100);
-    connect(applybutton,SIGNAL(clicked()),this,SLOT(volu()));
 
+    connect(applybutton,SIGNAL(clicked()),this,SLOT(volu()));
     connect(showbutton, SIGNAL(clicked()), this, SLOT (setText()));
 
-    windowWidget = new QWidget();
-    windowWidget->setLayout(gLayout);
-    windowWidget->show();
+    this->setLayout(gLayout);
 }
 
-void optionsWindow::volu(void){
-    MainMenue *Window = new MainMenue(nullptr,slide.value());
-    Window->setParent(this);
-    Window->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
-    Window->move(this->geometry().center() - Window->rect().center());
-    Window->activateWindow();
+void optionsWindow::volu(void) //zurück zum Menü
+{
+    //MainMenue *Window = new MainMenue(nullptr,slide.value());
+    //Window->setParent(this);
+    //Window->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+    //Window->move(this->geometry().center() - Window->rect().center());
+    //Window->activateWindow();
 
-};
-void optionsWindow::setText(){
+    QWidget *parent = this->parentWidget();
+    parent->show();
+    parent->move(this->geometry().center() - parent->rect().center());
+
+    this->close();
+
+}
+void optionsWindow::setText()
+{
     label->display(slide.value());
 }

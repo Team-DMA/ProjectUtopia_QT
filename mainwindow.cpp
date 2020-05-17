@@ -12,7 +12,6 @@
 #include "mainmenue.h"
 #include "startgamedialog.h"
 #include "optionswindow.h"
-
 #include <QGraphicsDropShadowEffect>
 
 //Test
@@ -40,11 +39,11 @@ MainWindow::MainWindow(QWidget *parent)
     headText->setGraphicsEffect(effect);
 
     QPushButton *enterGame = new QPushButton("&Enter Game");
-    QPushButton *calculatorButton = new QPushButton("&Taschenrechner");
+    QPushButton *optionsButton = new QPushButton("&Optionen");
     QPushButton *endGame = new QPushButton("&Spiel beenden");
 
     hBoxLayout->addWidget(enterGame);
-    hBoxLayout->addWidget(calculatorButton);
+    hBoxLayout->addWidget(optionsButton);
     hBoxLayout->addWidget(endGame);
 
     vBoxLayout->addWidget(headText,0,Qt::AlignCenter);
@@ -53,17 +52,17 @@ MainWindow::MainWindow(QWidget *parent)
     //design
     headText->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
     enterGame->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
-    calculatorButton->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+    optionsButton->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
     endGame->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
 
     QString StyleSheetDefault = "QPushButton { color: black; background-color: #FAFAFA; border: none; font: 17pt 'Microsoft YaHei UI'; outline: none;} QPushButton:hover { background-color: #D8D8D8; border-style: solid; border-width: 3px; border-color: #F2F2F2; } QPushButton:pressed { background-color: #A4A4A4; border-style: solid; border-width: 3px; border-color: #E6E6E6; }";
 
     enterGame->setStyleSheet(StyleSheetDefault);
-    calculatorButton->setStyleSheet(StyleSheetDefault);
+    optionsButton->setStyleSheet(StyleSheetDefault);
     endGame->setStyleSheet(StyleSheetDefault);
 
     connect(enterGame,SIGNAL(clicked()),this,SLOT(enterGame()));
-    connect(calculatorButton,SIGNAL(clicked()),this,SLOT(calculatorOpen()));
+    connect(optionsButton,SIGNAL(clicked()),this,SLOT(optionsOpen()));
     connect(endGame,SIGNAL(clicked()),this,SLOT(endTheGame()));
 
     windowWidget = new QWidget();
@@ -86,20 +85,26 @@ void MainWindow::enterGame()
 {
     qDebug() << "Enter game." << endl;
 
-    MainMenue *window = new MainMenue(nullptr,100);
+    this->close();
+
+    startGameDialog *window = new startGameDialog();
     window->setParent(this);
     window->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
-    window->move(this->geometry().center() - window->rect().center());
-    window->hide();
+    window->activateWindow();
 
-    this->close();
+    window->show();
+    window->move(this->geometry().center() - window->rect().center());
 }
 
-void MainWindow::calculatorOpen()
+void MainWindow::optionsOpen()
 {
-    calculator *calculatorWindow = new calculator();
-    calculatorWindow->activateWindow();
+    optionsWindow *optionWindow = new optionsWindow();
+    optionWindow->setParent(this);
+    optionWindow->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
     this->close();
+    optionWindow->show();
+    optionWindow->activateWindow();
+    optionWindow->move(this->geometry().center() - optionWindow->rect().center());
 }
 
 void MainWindow::endTheGame()

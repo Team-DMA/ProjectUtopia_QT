@@ -14,24 +14,39 @@
 
 startGameDialog::startGameDialog(QWidget *parent) : QWidget(parent)
 {
-    QVBoxLayout *layout = new QVBoxLayout();
+    QVBoxLayout *vBoxLayout = new QVBoxLayout(this);
+    QHBoxLayout *hBoxLayout = new QHBoxLayout(this);
+    vBoxLayout->setAlignment(Qt::AlignCenter);
+    hBoxLayout->setAlignment(Qt::AlignCenter);
+
+    textLabel.setAlignment(Qt::AlignHCenter);
+    progress.setAlignment(Qt::AlignHCenter);
 
     QPushButton *continueButton = new QPushButton("&Spiel fortsetzen",this);
     QPushButton *newGameButton = new QPushButton("&Neues Spiel",this);
     QPushButton *abortButton =new QPushButton("&Abbrechen",this);
 
-    QDialogButtonBox *buttonBox = new QDialogButtonBox(Qt::Horizontal);
-    buttonBox->addButton(continueButton,QDialogButtonBox::YesRole);
-    buttonBox->addButton(newGameButton,QDialogButtonBox::NoRole);
-    buttonBox->addButton(abortButton,QDialogButtonBox::RejectRole);
-
     connect(continueButton,SIGNAL(clicked()),this,SLOT(continueGame()));
     connect(newGameButton,SIGNAL(clicked()),this,SLOT(startNewGame()));
     connect(abortButton,SIGNAL(clicked()),this,SLOT(abortDialog()));
-    layout->addWidget(&progress,Qt::AlignCenter);
-    layout->addWidget(&textLabel,Qt::AlignCenter);
-    layout->addWidget(buttonBox);
-    this->setLayout(layout);
+
+    hBoxLayout->addWidget(continueButton);
+    hBoxLayout->addWidget(newGameButton);
+    hBoxLayout->addWidget(abortButton);
+
+    vBoxLayout->addWidget(&progress,Qt::AlignCenter);
+    vBoxLayout->addWidget(&textLabel,Qt::AlignCenter);
+    vBoxLayout->addLayout(hBoxLayout);
+
+    QString StyleSheetDefault = "QPushButton { color: white; background-color: #595959; border: none; font: 17pt 'Microsoft YaHei UI'; outline: none;} QPushButton:hover { background-color: #737373; border-style: solid; border-width: 3px; border-color: #F2F2F2; } QPushButton:pressed { background-color: #A4A4A4; border-style: solid; border-width: 3px; border-color: #E6E6E6; }";
+    continueButton->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+    continueButton->setStyleSheet(StyleSheetDefault);
+    newGameButton->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+    newGameButton->setStyleSheet(StyleSheetDefault);
+    abortButton->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+    abortButton->setStyleSheet(StyleSheetDefault);
+
+    this->setLayout(vBoxLayout);
 }
 
 startGameDialog::~startGameDialog()
@@ -42,6 +57,9 @@ startGameDialog::~startGameDialog()
 void startGameDialog::continueGame()
 {
     qDebug() << "Game continued." << endl;
+
+    textLabel.setHidden(true);
+
     double anz=rand()%5;
         double i=0;
         while(i<=32700.0){
@@ -75,11 +93,16 @@ void startGameDialog::continueGame()
         }
         progress.setValue(32700);
         this->close();
-   levelMenue *mainlevelMenue = new levelMenue();
-    mainlevelMenue->setFixedSize(1600,900);
-    mainlevelMenue->setParent(this);
-    mainlevelMenue->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
-    mainlevelMenue->move(this->geometry().center() - mainlevelMenue->rect().center());
+        levelMenue *mainlevelMenue = new levelMenue();
+        mainlevelMenue->setFixedSize(1600,900);
+        mainlevelMenue->setParent(this);
+        mainlevelMenue->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+        mainlevelMenue->activateWindow();
+        mainlevelMenue->show();
+        mainlevelMenue->move(this->geometry().center() - mainlevelMenue->rect().center());
+        progress.setValue(0);
+
+        textLabel.setHidden(true);
 
 }
 void startGameDialog::startNewGame()
@@ -87,15 +110,15 @@ void startGameDialog::startNewGame()
     qDebug() << "New game started." << endl;
 
     textLabel.setText("New Game started.");
+    textLabel.setHidden(false);
 }
 void startGameDialog::abortDialog()
 {
     qDebug() << "Back to menu." << endl;
 
+    QWidget *parent = this->parentWidget();
+    parent->show();
+    parent->move(this->geometry().center() - parent->rect().center());
 
     this->close();
-    MainMenue *optionWindow = new MainMenue();
-    optionWindow->setParent(this);
-    optionWindow->setWindowFlags(Qt::Window | Qt::WindowSystemMenuHint);
-    optionWindow->move(this->geometry().center() - optionWindow->rect().center());
 }

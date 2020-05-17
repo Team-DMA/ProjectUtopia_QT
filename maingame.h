@@ -2,9 +2,6 @@
 #define MAINGAME_H
 #include <QSlider>
 #include <QWidget>
-#include <QPushButton>
-#include <QLabel>
-#include <QGridLayout>
 
 class mainGame : public QWidget
 {
@@ -87,6 +84,8 @@ private:
     QWidget *Level10Stage4;
     QWidget *Level10Stage5;
 
+    QWidget *faill;
+    QWidget *winn;
 
     const int x=1600;
     const int y=900;
@@ -154,7 +153,11 @@ private slots:
     void level10Stage5();
 
 
-     void backToLevelMenue(void);
+     void backToLevelMenue();
+     void fail();
+     void win();
+
+     void calculatorOpen();
 
 };
 

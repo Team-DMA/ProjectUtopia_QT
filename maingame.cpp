@@ -15,6 +15,7 @@
 #include "optionswindow.h"
 #include "levelmenue.h"
 #include "level.h"
+#include "calculator.h"
 mainGame::mainGame(int level_pointer,QWidget *parent) : QWidget(parent)
 {
     qDebug() << "Main game started." << endl;
@@ -77,110 +78,117 @@ mainGame::~mainGame()
 
 //Level1
 void mainGame::level1Stage1(){
-      qDebug() << "Level1" << endl;
+    qDebug() << "Level1" << endl;
 
-      //Stage1
-      QGridLayout *stageLayout = new QGridLayout(this);;
+    //Stage1
+    QGridLayout *stageLayout = new QGridLayout(this);;
 
-      QLabel *Question_label = new QLabel(this);
-      Question_label->setText("Wie lautet die Lösung für x, wenn gilt (10*3)/5=(4+2*4)/x");
-      QLabel *headText = new QLabel(this);
-      headText->setText("Willkommen im ersten Level. Hier ist die erste Frage:");
+    QLabel *Question_label = new QLabel(this);
+    Question_label->setText("Wie lautet die Lösung für x, wenn gilt (10*3)/5=(4+2*4)/x");
+    QLabel *headText = new QLabel(this);
+    headText->setText("Willkommen im ersten Level. Hier ist die erste Frage:");
 
-      QPushButton *Answer1_button = new QPushButton("2",this);
-      QPushButton *Answer2_button = new QPushButton("4",this);
-      QPushButton *Answer3_button = new QPushButton("6",this);
-      QPushButton *Answer4_button = new QPushButton("10",this);
+    QPushButton *Answer1_button = new QPushButton("2",this);
+    QPushButton *Answer2_button = new QPushButton("4",this);
+    QPushButton *Answer3_button = new QPushButton("6",this);
+    QPushButton *Answer4_button = new QPushButton("10",this);
+    QPushButton *calculatorButton = new QPushButton("&Taschenrechner");
+    calculatorButton->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+    QPushButton *backToLevelMenue_button = new QPushButton("Zurück zum Levelmenü",this);
 
-      QPushButton *backToLevelMenue_button = new QPushButton("Zurück zum Levelmenü",this);
+    stageLayout->setAlignment(Qt::AlignCenter);
+    stageLayout->addWidget(headText,0,0,Qt::AlignCenter);
+    stageLayout->addWidget(Question_label,1,0,Qt::AlignCenter);
+    stageLayout->addWidget(Answer1_button,2,0,Qt::AlignCenter);
+    stageLayout->addWidget(Answer2_button,2,1,Qt::AlignCenter);
+    stageLayout->addWidget(Answer3_button,3,0,Qt::AlignCenter);
+    stageLayout->addWidget(Answer4_button,3,1,Qt::AlignCenter);
+    stageLayout->addWidget(backToLevelMenue_button,5,4,Qt::AlignCenter);
+    stageLayout->addWidget(calculatorButton,4,5,Qt::AlignCenter);
 
-      stageLayout->setAlignment(Qt::AlignCenter);
-      stageLayout->addWidget(headText,0,0,Qt::AlignCenter);
-      stageLayout->addWidget(Question_label,1,0,Qt::AlignCenter);
-      stageLayout->addWidget(Answer1_button,2,0,Qt::AlignCenter);
-      stageLayout->addWidget(Answer2_button,2,1,Qt::AlignCenter);
-      stageLayout->addWidget(Answer3_button,3,0,Qt::AlignCenter);
-      stageLayout->addWidget(Answer4_button,3,1,Qt::AlignCenter);
+    this->setLayout(stageLayout);
+    this->show();
 
-      stageLayout->addWidget(backToLevelMenue_button,5,4,Qt::AlignCenter);
-
-      this->setLayout(stageLayout);
-      this->setFixedSize(x,y);
-      this->move(parentWidget()->geometry().center() - this->rect().center());
-      this->show();
-
-      //Connection
-      connect(backToLevelMenue_button,SIGNAL(clicked()),mothership,SLOT(backToLevelMenue()));
-      connect(Answer1_button,SIGNAL(clicked()),mothership,SLOT(level1Stage2()));
+    //Connection
+    connect(backToLevelMenue_button,SIGNAL(clicked()),mothership,SLOT(backToLevelMenue()));
+    connect(Answer1_button,SIGNAL(clicked()),mothership,SLOT(level1Stage2()));
+    connect(calculatorButton,SIGNAL(clicked()),this,SLOT(calculatorOpen()));
 }
 void mainGame::level1Stage2(){
 
     qDeleteAll(this->children());
     delete this->layout();
 
-    //Stage2
-      QGridLayout *stageLayout = new QGridLayout(this);
+    //stage2
+    QGridLayout *stageLayout = new QGridLayout(this);
 
-      QLabel *Question_label = new QLabel(this);
-      Question_label->setText("stage2Question");
-      QLabel *headText = new QLabel(this);
-      headText->setText("stage2Title");
-      QPushButton *Answer1_button = new QPushButton("stage2Answer1",this);
-      QPushButton *Answer2_button = new QPushButton("stage2Answer2",this);
-      QPushButton *Answer3_button = new QPushButton("stage2Answer3",this);
-      QPushButton *Answer4_button = new QPushButton("stage2Answer4",this);
+    QLabel *Question_label = new QLabel(this);
+    Question_label->setText("(x+4)^2=(12C2)-2");
+    QLabel *headText = new QLabel(this);
+    headText->setText("Level 1 Frage 2");
 
-      QPushButton *backToLevelMenue_button = new QPushButton("Zurück zum Levelmenü",this);
+    QPushButton *Answer1_button = new QPushButton("46",this);
+    QPushButton *Answer2_button = new QPushButton("55",this);
+    QPushButton *Answer3_button = new QPushButton("4",this);
+    QPushButton *Answer4_button = new QPushButton("9",this);
+    QPushButton *backToLevelMenue_button = new QPushButton("Zurück zum Levelmenü",this);
+    QPushButton *calculatorButton = new QPushButton("&Taschenrechner");
+    calculatorButton->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
 
-      stageLayout->setAlignment(Qt::AlignCenter);
-      stageLayout->addWidget(headText,0,0,Qt::AlignCenter);
-      stageLayout->addWidget(Question_label,1,0,Qt::AlignCenter);
-      stageLayout->addWidget(Answer1_button,2,0,Qt::AlignCenter);
-      stageLayout->addWidget(Answer2_button,2,1,Qt::AlignCenter);
-      stageLayout->addWidget(Answer3_button,3,0,Qt::AlignCenter);
-      stageLayout->addWidget(Answer4_button,3,1,Qt::AlignCenter);
+    stageLayout->setAlignment(Qt::AlignCenter);
+    stageLayout->addWidget(headText,0,0,Qt::AlignCenter);
+    stageLayout->addWidget(Question_label,1,0,Qt::AlignCenter);
+    stageLayout->addWidget(Answer1_button,2,0,Qt::AlignCenter);
+    stageLayout->addWidget(Answer2_button,2,1,Qt::AlignCenter);
+    stageLayout->addWidget(Answer3_button,3,0,Qt::AlignCenter);
+    stageLayout->addWidget(Answer4_button,3,1,Qt::AlignCenter);
+    stageLayout->addWidget(backToLevelMenue_button,5,4,Qt::AlignCenter);
+    stageLayout->addWidget(calculatorButton,4,5,Qt::AlignCenter);
 
-      stageLayout->addWidget(backToLevelMenue_button,5,4,Qt::AlignCenter);
+    this->setLayout(stageLayout);
+    this->show();
 
-      this->setLayout(stageLayout);
-      this->show();
-      //Connection
-       connect(backToLevelMenue_button,SIGNAL(clicked()),mothership,SLOT(backToLevelMenue()));
-      connect(Answer1_button,SIGNAL(clicked()),mothership,SLOT(level1Stage3()));
+    //Connection
+    connect(backToLevelMenue_button,SIGNAL(clicked()),mothership,SLOT(backToLevelMenue()));
+    connect(Answer3_button,SIGNAL(clicked()),mothership,SLOT(level1Stage3()));
+    connect(calculatorButton,SIGNAL(clicked()),this,SLOT(calculatorOpen()));
 }
 void mainGame::level1Stage3()
 {
-      qDeleteAll(this->children());
-      delete this->layout();
+    qDeleteAll(this->children());
+    delete this->layout();
 
-      //Stage3
-      QGridLayout *stageLayout = new QGridLayout(this);
-      QLabel *headText = new QLabel(this);
-      QLabel *Question_label = new QLabel(this);
+    //Stage3
+    QGridLayout *stageLayout = new QGridLayout(this);
 
-      Question_label->setText("stage3Question");
-      headText->setText("stage3Title");
-      QPushButton *Answer1_button = new QPushButton("stage3Answer1",this);
-      QPushButton *Answer2_button = new QPushButton("stage3Answer2",this);
-      QPushButton *Answer3_button = new QPushButton("stage3Answer3",this);
-      QPushButton *Answer4_button = new QPushButton("stage3Answer4",this);
+    QLabel *headText = new QLabel(this);
+    QLabel *Question_label = new QLabel(this);
 
-      QPushButton *backToLevelMenue_button = new QPushButton("Zurück zum Levelmenü",this);
+    Question_label->setText("(8+5*12)/5=");
+    headText->setText("Level 1 Frage 3");
+    QPushButton *Answer1_button = new QPushButton("18,1",this);
+    QPushButton *Answer2_button = new QPushButton("13,6",this);
+    QPushButton *Answer3_button = new QPushButton("9,7",this);
+    QPushButton *Answer4_button = new QPushButton("42",this);
+    QPushButton *backToLevelMenue_button = new QPushButton("Zurück zum Levelmenü",this);
+    QPushButton *calculatorButton = new QPushButton("&Taschenrechner");
+    calculatorButton->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
 
-      stageLayout->setAlignment(Qt::AlignCenter);
-      stageLayout->addWidget(headText,0,0,Qt::AlignCenter);
-      stageLayout->addWidget(Question_label,1,0,Qt::AlignCenter);
-      stageLayout->addWidget(Answer1_button,2,0,Qt::AlignCenter);
-      stageLayout->addWidget(Answer2_button,2,1,Qt::AlignCenter);
-      stageLayout->addWidget(Answer3_button,3,0,Qt::AlignCenter);
-      stageLayout->addWidget(Answer4_button,3,1,Qt::AlignCenter);
+    stageLayout->setAlignment(Qt::AlignCenter);
+    stageLayout->addWidget(calculatorButton,4,5,Qt::AlignCenter);
+    stageLayout->addWidget(headText,0,0,Qt::AlignCenter);
+    stageLayout->addWidget(Question_label,1,0,Qt::AlignCenter);
+    stageLayout->addWidget(Answer1_button,2,0,Qt::AlignCenter);
+    stageLayout->addWidget(Answer2_button,2,1,Qt::AlignCenter);
+    stageLayout->addWidget(Answer3_button,3,0,Qt::AlignCenter);
+    stageLayout->addWidget(Answer4_button,3,1,Qt::AlignCenter);
+    stageLayout->addWidget(backToLevelMenue_button,5,4,Qt::AlignCenter);
 
-      stageLayout->addWidget(backToLevelMenue_button,5,4,Qt::AlignCenter);
-
-      //Connection
-       connect(backToLevelMenue_button,SIGNAL(clicked()),mothership,SLOT(backToLevelMenue()));  
-       connect(Answer1_button,SIGNAL(clicked()),mothership,SLOT(level1Stage4()));
-      }
+    //Connection
+    connect(backToLevelMenue_button,SIGNAL(clicked()),mothership,SLOT(backToLevelMenue()));
+    connect(calculatorButton,SIGNAL(clicked()),this,SLOT(calculatorOpen()));
+    connect(Answer2_button,SIGNAL(clicked()),mothership,SLOT(level1Stage4()));
+}
 void mainGame::level1Stage4(){
     qDeleteAll(this->children());
     delete this->layout();
@@ -190,12 +198,17 @@ void mainGame::level1Stage4(){
       QLabel *headTextLevelStage4 = new QLabel(this);
       QLabel *stage4Question_label = new QLabel(this);
 
-      stage4Question_label->setText("stage4Question");
-      headTextLevelStage4->setText("stage4Title");
-      QPushButton *stage4Answer1_button = new QPushButton("stage4Answer1",this);
-      QPushButton *stage4Answer2_button = new QPushButton("stage4Answer2",this);
-      QPushButton *stage4Answer3_button = new QPushButton("stage4Answer3",this);
-      QPushButton *stage4Answer4_button = new QPushButton("stage4Answer4",this);
+      stage4Question_label->setText("Level 1 Frage 4");
+      headTextLevelStage4->setText("(8*8-6*9)/10=(6*x-5)!");
+      QPushButton *stage4Answer1_button = new QPushButton("1",this);
+      QPushButton *stage4Answer2_button = new QPushButton("-2",this);
+      QPushButton *stage4Answer3_button = new QPushButton("0",this);
+      QPushButton *stage4Answer4_button = new QPushButton("3",this);
+      // Calculator
+      QPushButton *calculatorButton = new QPushButton("&Taschenrechner");
+      stage4Layout->addWidget(calculatorButton,4,5,Qt::AlignCenter);
+      calculatorButton->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+      connect(calculatorButton,SIGNAL(clicked()),this,SLOT(calculatorOpen()));
 
       stage4Layout->setAlignment(Qt::AlignCenter);
       stage4Layout->addWidget(headTextLevelStage4,0,0,Qt::AlignCenter);
@@ -227,12 +240,17 @@ void mainGame::level1Stage5(){
       QLabel *headTextLevelStage5 = new QLabel(this);
       QLabel *stage5Question_label = new QLabel(this);
 
-      stage5Question_label->setText("stage5Question");
-      headTextLevelStage5->setText("stage5Title");
-      QPushButton *stage5Answer1_button = new QPushButton("stage5Answer1",this);
-      QPushButton *stage5Answer2_button = new QPushButton("stage5Answer2",this);
-      QPushButton *stage5Answer3_button = new QPushButton("stage5Answer3",this);
-      QPushButton *stage5Answer4_button = new QPushButton("stage5Answer4",this);
+      stage5Question_label->setText("(WURZEL(64)*WURZEL(121)*WURZEL(169)+5)!=9*x-8");
+      headTextLevelStage5->setText("Level 1 Frage 2");
+      QPushButton *stage5Answer1_button = new QPushButton("9",this);
+      QPushButton *stage5Answer2_button = new QPushButton("256.371.901",this);
+      QPushButton *stage5Answer3_button = new QPushButton("42.685.843.965.154.876.596.585.426.426.845.269.512.126.589*10^20",this);
+      QPushButton *stage5Answer4_button = new QPushButton("9,562616830057754036938659013957*10^3002",this);
+      // Calculator
+      QPushButton *calculatorButton = new QPushButton("&Taschenrechner");
+      stage5Layout->addWidget(calculatorButton,4,5,Qt::AlignCenter);
+      calculatorButton->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+      connect(calculatorButton,SIGNAL(clicked()),this,SLOT(calculatorOpen()));
 
       stage5Layout->setAlignment(Qt::AlignCenter);
       stage5Layout->addWidget(headTextLevelStage5,0,0,Qt::AlignCenter);
@@ -256,7 +274,7 @@ void mainGame::level1Stage5(){
       //Connection
        connect(backToLevelMenue_button,SIGNAL(clicked()),mothership,SLOT(backToLevelMenue()));
         stage5Layout->addWidget(backToLevelMenue_button,5,4,Qt::AlignCenter);
-
+connect(stage5Answer4_button,SIGNAL(clicked()),mothership,SLOT(win()));
 }
 
 //Level2
@@ -280,6 +298,11 @@ void mainGame::level2Stage1(){
       QPushButton *stage1Answer2_button = new QPushButton("4",this);
       QPushButton *stage1Answer3_button = new QPushButton("6",this);
       QPushButton *stage1Answer4_button = new QPushButton("10",this);
+      // Calculator
+      QPushButton *calculatorButton = new QPushButton("&Taschenrechner");
+      stage1Layout->addWidget(calculatorButton,4,5,Qt::AlignCenter);
+      calculatorButton->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+      connect(calculatorButton,SIGNAL(clicked()),this,SLOT(calculatorOpen()));
 
       stage1Layout->setAlignment(Qt::AlignCenter);
       stage1Layout->addWidget(headTextLevelStage1,0,0,Qt::AlignCenter);
@@ -318,6 +341,11 @@ void mainGame::level2Stage2(){
       QPushButton *stage2Answer2_button = new QPushButton("stage2Answer2",this);
       QPushButton *stage2Answer3_button = new QPushButton("stage2Answer3",this);
       QPushButton *stage2Answer4_button = new QPushButton("stage2Answer4",this);
+      // Calculator
+      QPushButton *calculatorButton = new QPushButton("&Taschenrechner");
+      stage2Layout->addWidget(calculatorButton,4,5,Qt::AlignCenter);
+      calculatorButton->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+      connect(calculatorButton,SIGNAL(clicked()),this,SLOT(calculatorOpen()));
 
       stage2Layout->setAlignment(Qt::AlignCenter);
       stage2Layout->addWidget(headTextLevelStage2,0,0,Qt::AlignCenter);
@@ -355,6 +383,11 @@ void mainGame::level2Stage3(){
       QPushButton *stage3Answer2_button = new QPushButton("stage3Answer2",this);
       QPushButton *stage3Answer3_button = new QPushButton("stage3Answer3",this);
       QPushButton *stage3Answer4_button = new QPushButton("stage3Answer4",this);
+      // Calculator
+      QPushButton *calculatorButton = new QPushButton("&Taschenrechner");
+      stage3Layout->addWidget(calculatorButton,4,5,Qt::AlignCenter);
+      calculatorButton->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+      connect(calculatorButton,SIGNAL(clicked()),this,SLOT(calculatorOpen()));
 
       stage3Layout->setAlignment(Qt::AlignCenter);
       stage3Layout->addWidget(headTextLevelStage3,0,0,Qt::AlignCenter);
@@ -393,6 +426,11 @@ void mainGame::level2Stage4(){
       QPushButton *stage4Answer2_button = new QPushButton("stage4Answer2",this);
       QPushButton *stage4Answer3_button = new QPushButton("stage4Answer3",this);
       QPushButton *stage4Answer4_button = new QPushButton("stage4Answer4",this);
+      // Calculator
+      QPushButton *calculatorButton = new QPushButton("&Taschenrechner");
+      stage4Layout->addWidget(calculatorButton,4,5,Qt::AlignCenter);
+      calculatorButton->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+      connect(calculatorButton,SIGNAL(clicked()),this,SLOT(calculatorOpen()));
 
       stage4Layout->setAlignment(Qt::AlignCenter);
       stage4Layout->addWidget(headTextLevelStage4,0,0,Qt::AlignCenter);
@@ -430,6 +468,11 @@ void mainGame::level2Stage5(){
       QPushButton *stage5Answer2_button = new QPushButton("stage5Answer2",this);
       QPushButton *stage5Answer3_button = new QPushButton("stage5Answer3",this);
       QPushButton *stage5Answer4_button = new QPushButton("stage5Answer4",this);
+      // Calculator
+      QPushButton *calculatorButton = new QPushButton("&Taschenrechner");
+      stage5Layout->addWidget(calculatorButton,4,5,Qt::AlignCenter);
+      calculatorButton->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+      connect(calculatorButton,SIGNAL(clicked()),this,SLOT(calculatorOpen()));
 
       stage5Layout->setAlignment(Qt::AlignCenter);
       stage5Layout->addWidget(headTextLevelStage5,0,0,Qt::AlignCenter);
@@ -453,7 +496,7 @@ void mainGame::level2Stage5(){
       //Connection
        connect(backToLevelMenue_button,SIGNAL(clicked()),mothership,SLOT(backToLevelMenue()));
         stage5Layout->addWidget(backToLevelMenue_button,5,4,Qt::AlignCenter);
-
+connect(stage5Answer1_button,SIGNAL(clicked()),mothership,SLOT(win()));
 }
 
 //Level3
@@ -649,7 +692,7 @@ void mainGame::level3Stage5(){
       //Connection
        connect(backToLevelMenue_button,SIGNAL(clicked()),mothership,SLOT(backToLevelMenue()));
         stage5Layout->addWidget(backToLevelMenue_button,5,4,Qt::AlignCenter);
-
+connect(stage5Answer1_button,SIGNAL(clicked()),mothership,SLOT(win()));
 }
 //Level 4
 void mainGame::level4Stage1(){
@@ -844,7 +887,7 @@ void mainGame::level4Stage5(){
       //Connection
        connect(backToLevelMenue_button,SIGNAL(clicked()),mothership,SLOT(backToLevelMenue()));
         stage5Layout->addWidget(backToLevelMenue_button,5,4,Qt::AlignCenter);
-
+connect(stage5Answer1_button,SIGNAL(clicked()),mothership,SLOT(win()));
 }
 //Level 5
 void mainGame::level5Stage1(){
@@ -1039,7 +1082,7 @@ void mainGame::level5Stage5(){
       //Connection
        connect(backToLevelMenue_button,SIGNAL(clicked()),mothership,SLOT(backToLevelMenue()));
         stage5Layout->addWidget(backToLevelMenue_button,5,4,Qt::AlignCenter);
-
+connect(stage5Answer1_button,SIGNAL(clicked()),mothership,SLOT(win()));
 }
 //Level6
 void mainGame::level6Stage1(){
@@ -1234,7 +1277,7 @@ void mainGame::level6Stage5(){
        connect(backToLevelMenue_button,SIGNAL(clicked()),mothership,SLOT(backToLevelMenue()));
         stage5Layout->addWidget(backToLevelMenue_button,5,4,Qt::AlignCenter);
 
-
+connect(stage5Answer1_button,SIGNAL(clicked()),mothership,SLOT(win()));
 }
 //Level 7
 void mainGame::level7Stage1(){
@@ -1429,7 +1472,7 @@ void mainGame::level7Stage5(){
       //Connection
        connect(backToLevelMenue_button,SIGNAL(clicked()),mothership,SLOT(backToLevelMenue()));
         stage5Layout->addWidget(backToLevelMenue_button,5,4,Qt::AlignCenter);
-
+        connect(stage5Answer1_button,SIGNAL(clicked()),mothership,SLOT(win()));
 }
 //Level 8
 void mainGame::level8Stage1(){
@@ -1623,7 +1666,7 @@ void mainGame::level8Stage5(){
       //Connection
        connect(backToLevelMenue_button,SIGNAL(clicked()),mothership,SLOT(backToLevelMenue()));
         stage5Layout->addWidget(backToLevelMenue_button,5,4,Qt::AlignCenter);
-
+    connect(stage5Answer1_button,SIGNAL(clicked()),mothership,SLOT(win()));
 
 }
 //Level 9
@@ -1820,7 +1863,7 @@ void mainGame::level9Stage5(){
       //Connection
        connect(backToLevelMenue_button,SIGNAL(clicked()),mothership,SLOT(backToLevelMenue()));
         stage5Layout->addWidget(backToLevelMenue_button,5,4,Qt::AlignCenter);
-
+    connect(stage5Answer1_button,SIGNAL(clicked()),mothership,SLOT(win()));
 }
 //Level 10
 void mainGame::level10Stage1(){
@@ -2017,7 +2060,7 @@ void mainGame::level10Stage5(){
       //Connection
        connect(backToLevelMenue_button,SIGNAL(clicked()),mothership,SLOT(backToLevelMenue()));
         stage5Layout->addWidget(backToLevelMenue_button,5,4,Qt::AlignCenter);
-
+    connect(stage5Answer1_button,SIGNAL(clicked()),mothership,SLOT(win()));
 }
 void mainGame::backToLevelMenue(void)
 {
@@ -2028,5 +2071,37 @@ void mainGame::backToLevelMenue(void)
     QWidget *parent = this->parentWidget();
     parent->show();
     parent->move(this->geometry().center() - parent->rect().center());
+}
+void mainGame::fail(){
+    QGridLayout *failLayout = new QGridLayout(this);
+    faill=new QWidget();
+    faill->setLayout(failLayout);
+    faill->setFixedSize(x,y);
+    faill->setParent(mothership);
+    //Zurückknopf
+    QPushButton *backToLevelMenue_button = new QPushButton("Zurück zum Levelmenü",this);
 
+    //Connection
+     connect(backToLevelMenue_button,SIGNAL(clicked()),mothership,SLOT(backToLevelMenue()));
+      failLayout->addWidget(backToLevelMenue_button,5,4,Qt::AlignCenter);
+}
+void mainGame::win(){
+    QGridLayout *winLayout = new QGridLayout(this);
+    winn=new QWidget();
+    winn->setLayout(winLayout);
+    winn->setFixedSize(x,y);
+    winn->setParent(mothership);
+    //Zurückknopf
+    QPushButton *backToLevelMenue_button = new QPushButton("Zurück zum Levelmenü",this);
+
+    //Connection
+     connect(backToLevelMenue_button,SIGNAL(clicked()),mothership,SLOT(backToLevelMenue()));
+      winLayout->addWidget(backToLevelMenue_button,5,4,Qt::AlignCenter);
+}
+
+void mainGame::calculatorOpen()
+{
+    calculator *calculatorWindow = new calculator();
+    calculatorWindow->activateWindow();
+    //this->close();
 }

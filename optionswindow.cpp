@@ -12,8 +12,8 @@ optionsWindow::optionsWindow(QWidget *parent): QWidget(parent)
 {
     //layout
     QGridLayout *gLayout = new QGridLayout(this);
-    QPushButton *applybutton = new QPushButton(this);
-    QPushButton *showbutton = new QPushButton(this);
+    QPushButton *applybutton = new QPushButton("&Übernehmen",this);
+    QPushButton *showbutton = new QPushButton("&Zeige Zahlenwert",this);
     QLabel *headText = new QLabel(this);
 
     headText->setText("Welcome to your point'n'click adventure");

@@ -96,6 +96,9 @@ void mainGame::level1Stage1()
     //Connection
     connect(backToLevelMenue_button,SIGNAL(clicked()),this,SLOT(backToLevelMenue()));
     connect(Answer1_button,SIGNAL(clicked()),this,SLOT(level1Stage2()));
+    connect(Answer2_button,SIGNAL(clicked()),this,SLOT(fail()));
+    connect(Answer3_button,SIGNAL(clicked()),this,SLOT(fail()));
+    connect(Answer4_button,SIGNAL(clicked()),this,SLOT(fail()));
     connect(calculatorButton,SIGNAL(clicked()),this,SLOT(calculatorOpen()));
 }
 void mainGame::level1Stage2()
@@ -135,6 +138,9 @@ void mainGame::level1Stage2()
     //Connection
     connect(backToLevelMenue_button,SIGNAL(clicked()),this,SLOT(backToLevelMenue()));
     connect(Answer3_button,SIGNAL(clicked()),this,SLOT(level1Stage3()));
+    connect(Answer1_button,SIGNAL(clicked()),this,SLOT(fail()));
+    connect(Answer2_button,SIGNAL(clicked()),this,SLOT(fail()));
+    connect(Answer4_button,SIGNAL(clicked()),this,SLOT(fail()));
     connect(calculatorButton,SIGNAL(clicked()),this,SLOT(calculatorOpen()));
 }
 void mainGame::level1Stage3()
@@ -175,6 +181,9 @@ void mainGame::level1Stage3()
     connect(backToLevelMenue_button,SIGNAL(clicked()),this,SLOT(backToLevelMenue()));
     connect(calculatorButton,SIGNAL(clicked()),this,SLOT(calculatorOpen()));
     connect(Answer2_button,SIGNAL(clicked()),this,SLOT(level1Stage4()));
+    connect(Answer1_button,SIGNAL(clicked()),this,SLOT(fail()));
+    connect(Answer3_button,SIGNAL(clicked()),this,SLOT(fail()));
+    connect(Answer4_button,SIGNAL(clicked()),this,SLOT(fail()));
 }
 void mainGame::level1Stage4()
 {
@@ -187,8 +196,8 @@ void mainGame::level1Stage4()
     QLabel *headText = new QLabel(this);
     QLabel *Question_label = new QLabel(this);
 
-    Question_label->setText("Level 1 Frage 4");
-    headText->setText("(8*8-6*9)/10=(6*x-5)!");
+    Question_label->setText("(8*8-6*9)/10=(6*x-5)!");
+    headText->setText("Level 1 Frage 4");
     QPushButton *Answer1_button = new QPushButton("1",this);
     QPushButton *Answer2_button = new QPushButton("-2",this);
     QPushButton *Answer3_button = new QPushButton("0",this);
@@ -214,6 +223,9 @@ void mainGame::level1Stage4()
     //Connection
     connect(backToLevelMenue_button,SIGNAL(clicked()),this,SLOT(backToLevelMenue()));
     connect(Answer1_button,SIGNAL(clicked()),this,SLOT(level1Stage5()));
+    connect(Answer2_button,SIGNAL(clicked()),this,SLOT(fail()));
+    connect(Answer3_button,SIGNAL(clicked()),this,SLOT(fail()));
+    connect(Answer4_button,SIGNAL(clicked()),this,SLOT(fail()));
     connect(calculatorButton,SIGNAL(clicked()),this,SLOT(calculatorOpen()));
 }
 void mainGame::level1Stage5()
@@ -227,7 +239,7 @@ void mainGame::level1Stage5()
     QLabel *headText = new QLabel(this);
     QLabel *Question_label = new QLabel(this);
 
-    Question_label->setText("(WURZEL(64)*WURZEL(121)*WURZEL(169)+5)!=9*x-8");
+    Question_label->setText("("+QString::fromUtf8("\u221A")+"64*"+QString::fromUtf8("\u221A")+"121*"+QString::fromUtf8("\u221A")+"169+5)!=9*x-8");
     headText->setText("Level 1 Frage 5");
     QPushButton *Answer1_button = new QPushButton("9",this);
     QPushButton *Answer2_button = new QPushButton("256.371.901",this);
@@ -254,6 +266,9 @@ void mainGame::level1Stage5()
     //Connection
     connect(backToLevelMenue_button,SIGNAL(clicked()),this,SLOT(backToLevelMenue()));
     connect(Answer4_button,SIGNAL(clicked()),this,SLOT(win()));
+    connect(Answer1_button,SIGNAL(clicked()),this,SLOT(fail()));
+    connect(Answer2_button,SIGNAL(clicked()),this,SLOT(fail()));
+    connect(Answer3_button,SIGNAL(clicked()),this,SLOT(fail()));
     connect(calculatorButton,SIGNAL(clicked()),this,SLOT(calculatorOpen()));
 }
 
@@ -271,12 +286,12 @@ void mainGame::level2Stage1()
       QLabel *headText = new QLabel(this);
       QLabel *Question_label = new QLabel(this);
 
-      Question_label->setText("Wie lautet die Lösung für x, wenn gilt (10*3)/5=(4+2*4)/x");
+      Question_label->setText("e^(4*x)-11*e^(2*x)+18=0");
       headText->setText("Willkommen im zweiten Level. Hier ist die erste Frage:");
       QPushButton *Answer1_button = new QPushButton("2",this);
-      QPushButton *Answer2_button = new QPushButton("4",this);
-      QPushButton *Answer3_button = new QPushButton("6",this);
-      QPushButton *Answer4_button = new QPushButton("10",this);
+      QPushButton *Answer2_button = new QPushButton("ln(3)",this);
+      QPushButton *Answer3_button = new QPushButton("e^3",this);
+      QPushButton *Answer4_button = new QPushButton("-2/3",this);
       QPushButton *backToLevelMenue_button = new QPushButton("Zurück zum Levelmenü",this);
       QPushButton *calculatorButton = new QPushButton("&Taschenrechner");
       calculatorButton->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
@@ -297,7 +312,10 @@ void mainGame::level2Stage1()
 
       //Connection
       connect(backToLevelMenue_button,SIGNAL(clicked()),this,SLOT(backToLevelMenue()));
-      connect(Answer1_button,SIGNAL(clicked()),this,SLOT(level2Stage2()));
+      connect(Answer2_button,SIGNAL(clicked()),this,SLOT(level2Stage2()));
+      connect(Answer1_button,SIGNAL(clicked()),this,SLOT(fail()));
+      connect(Answer3_button,SIGNAL(clicked()),this,SLOT(fail()));
+      connect(Answer4_button,SIGNAL(clicked()),this,SLOT(fail()));
       connect(calculatorButton,SIGNAL(clicked()),this,SLOT(calculatorOpen()));
 }
 void mainGame::level2Stage2()
@@ -311,12 +329,12 @@ void mainGame::level2Stage2()
     QLabel *headText = new QLabel(this);
     QLabel *Question_label = new QLabel(this);
 
-    Question_label->setText("stage2Question");
-    headText->setText("stage2Title");
-    QPushButton *Answer1_button = new QPushButton("stage2Answer1",this);
-    QPushButton *Answer2_button = new QPushButton("stage2Answer2",this);
-    QPushButton *Answer3_button = new QPushButton("stage2Answer3",this);
-    QPushButton *Answer4_button = new QPushButton("stage2Answer4",this);
+    Question_label->setText("6/x^4+1/x^2=1");
+    headText->setText("Level 2 Frage 2");
+    QPushButton *Answer1_button = new QPushButton("1",this);
+    QPushButton *Answer2_button = new QPushButton((QString::fromUtf8("\u221A")+"15"),this);
+    QPushButton *Answer3_button = new QPushButton((QString::fromUtf8("\u221A")+"3"),this);
+    QPushButton *Answer4_button = new QPushButton("4",this);
     QPushButton *backToLevelMenue_button = new QPushButton("Zurück zum Levelmenü",this);
     QPushButton *calculatorButton = new QPushButton("&Taschenrechner");
     calculatorButton->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
@@ -337,7 +355,10 @@ void mainGame::level2Stage2()
 
     //Connection
     connect(backToLevelMenue_button,SIGNAL(clicked()),this,SLOT(backToLevelMenue()));
-    connect(Answer1_button,SIGNAL(clicked()),this,SLOT(level2Stage3()));
+    connect(Answer3_button,SIGNAL(clicked()),this,SLOT(level2Stage3()));
+    connect(Answer1_button,SIGNAL(clicked()),this,SLOT(fail()));
+    connect(Answer2_button,SIGNAL(clicked()),this,SLOT(fail()));
+    connect(Answer4_button,SIGNAL(clicked()),this,SLOT(fail()));
     connect(calculatorButton,SIGNAL(clicked()),this,SLOT(calculatorOpen()));
 }
 void mainGame::level2Stage3()
@@ -351,12 +372,12 @@ void mainGame::level2Stage3()
     QLabel *headText = new QLabel(this);
     QLabel *Question_label = new QLabel(this);
 
-    Question_label->setText("stage3Question");
-    headText->setText("stage3Title");
-    QPushButton *Answer1_button = new QPushButton("stage3Answer1",this);
-    QPushButton *Answer2_button = new QPushButton("stage3Answer2",this);
-    QPushButton *Answer3_button = new QPushButton("stage3Answer3",this);
-    QPushButton *Answer4_button = new QPushButton("stage3Answer4",this);
+    Question_label->setText("3*(x-10)^2+90^2=(x-23)(x-137)+3999");
+    headText->setText("Level ");
+    QPushButton *Answer1_button = new QPushButton("-25",this);
+    QPushButton *Answer2_button = new QPushButton("-24",this);
+    QPushButton *Answer3_button = new QPushButton("-26",this);
+    QPushButton *Answer4_button = new QPushButton("27",this);
     QPushButton *backToLevelMenue_button = new QPushButton("Zurück zum Levelmenü",this);
     QPushButton *calculatorButton = new QPushButton("&Taschenrechner");
     calculatorButton->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
@@ -378,6 +399,9 @@ void mainGame::level2Stage3()
     //Connection
     connect(backToLevelMenue_button,SIGNAL(clicked()),this,SLOT(backToLevelMenue()));
     connect(Answer1_button,SIGNAL(clicked()),this,SLOT(level2Stage4()));
+    connect(Answer2_button,SIGNAL(clicked()),this,SLOT(fail()));
+    connect(Answer3_button,SIGNAL(clicked()),this,SLOT(fail()));
+    connect(Answer4_button,SIGNAL(clicked()),this,SLOT(fail()));
     connect(calculatorButton,SIGNAL(clicked()),this,SLOT(calculatorOpen()));
 }
 void mainGame::level2Stage4()
@@ -391,12 +415,12 @@ void mainGame::level2Stage4()
     QLabel *headText = new QLabel(this);
     QLabel *Question_label = new QLabel(this);
 
-    Question_label->setText("stage4Question");
+    Question_label->setText("(2*x^2-8)*(e^(2*x)-6)=0");
     headText->setText("stage4Title");
-    QPushButton *Answer1_button = new QPushButton("stage4Answer1",this);
-    QPushButton *Answer2_button = new QPushButton("stage4Answer2",this);
-    QPushButton *Answer3_button = new QPushButton("stage4Answer3",this);
-    QPushButton *Answer4_button = new QPushButton("stage4Answer4",this);
+    QPushButton *Answer1_button = new QPushButton("-11",this);
+    QPushButton *Answer2_button = new QPushButton("-4",this);
+    QPushButton *Answer3_button = new QPushButton("3",this);
+    QPushButton *Answer4_button = new QPushButton("-2",this);
     QPushButton *backToLevelMenue_button = new QPushButton("Zurück zum Levelmenü",this);
     QPushButton *calculatorButton = new QPushButton("&Taschenrechner");
     calculatorButton->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
@@ -417,7 +441,10 @@ void mainGame::level2Stage4()
 
     //Connection
     connect(backToLevelMenue_button,SIGNAL(clicked()),this,SLOT(backToLevelMenue()));
-    connect(Answer1_button,SIGNAL(clicked()),this,SLOT(level2Stage5()));
+    connect(Answer4_button,SIGNAL(clicked()),this,SLOT(level2Stage5()));
+    connect(Answer1_button,SIGNAL(clicked()),this,SLOT(fail()));
+    connect(Answer2_button,SIGNAL(clicked()),this,SLOT(fail()));
+    connect(Answer3_button,SIGNAL(clicked()),this,SLOT(fail()));
     connect(calculatorButton,SIGNAL(clicked()),this,SLOT(calculatorOpen()));
 }
 void mainGame::level2Stage5()
@@ -431,12 +458,12 @@ void mainGame::level2Stage5()
     QLabel *headText = new QLabel(this);
     QLabel *Question_label = new QLabel(this);
 
-    Question_label->setText("stage5Question");
+    Question_label->setText("(x+11)/(x+3)=(2*x+1)/(x+5)");
     headText->setText("stage5Title");
-    QPushButton *Answer1_button = new QPushButton("stage5Answer1",this);
-    QPushButton *Answer2_button = new QPushButton("stage5Answer2",this);
-    QPushButton *Answer3_button = new QPushButton("stage5Answer3",this);
-    QPushButton *Answer4_button = new QPushButton("stage5Answer4",this);
+    QPushButton *Answer1_button = new QPushButton("10",this);
+    QPushButton *Answer2_button = new QPushButton("13",this);
+    QPushButton *Answer3_button = new QPushButton("7",this);
+    QPushButton *Answer4_button = new QPushButton("15",this);
     QPushButton *backToLevelMenue_button = new QPushButton("Zurück zum Levelmenü",this);
     QPushButton *calculatorButton = new QPushButton("&Taschenrechner");
     calculatorButton->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
@@ -457,7 +484,10 @@ void mainGame::level2Stage5()
 
     //Connection
     connect(backToLevelMenue_button,SIGNAL(clicked()),this,SLOT(backToLevelMenue()));
+    connect(Answer2_button,SIGNAL(clicked()),this,SLOT(win()));
     connect(Answer1_button,SIGNAL(clicked()),this,SLOT(win()));
+    connect(Answer3_button,SIGNAL(clicked()),this,SLOT(win()));
+    connect(Answer4_button,SIGNAL(clicked()),this,SLOT(win()));
     connect(calculatorButton,SIGNAL(clicked()),this,SLOT(calculatorOpen()));
 }
 
@@ -1087,8 +1117,15 @@ void mainGame::fail()
     delete this->layout();
 
     QGridLayout *failLayout = new QGridLayout(this);
+    failLayout->setAlignment(Qt::AlignCenter);
     this->setLayout(failLayout);
 
+    QPixmap bkgnd(":/img/FAIL.jpg");
+    bkgnd = bkgnd.scaled(this->size()/*, Qt::IgnoreAspectRatio*/);
+
+    QPalette palette;
+    palette.setBrush(QPalette::Background, bkgnd);
+    this->setPalette(palette);
     //Zurückknopf
     QPushButton *backToLevelMenue_button = new QPushButton("Zurück zum Levelmenü",this);
 

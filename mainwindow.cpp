@@ -49,9 +49,10 @@ MainWindow::MainWindow(QWidget *parent)
     vBoxLayout->addWidget(headText,0,Qt::AlignCenter);
     vBoxLayout->addLayout(hBoxLayout);
 
-    QMediaPlayer *menuMusic = new QMediaPlayer();
+    menuMusic = new QMediaPlayer();
     menuMusic->setMedia(QUrl("qrc:/sounds/background.wav"));
     menuMusic->setParent(this);
+    menuMusic->setVolume(100);
     menuMusic->play();
 
     //design
@@ -115,4 +116,10 @@ void MainWindow::optionsOpen()
 void MainWindow::endTheGame()
 {
     qApp->closeAllWindows();
+}
+
+void MainWindow::volumeSet(qint8 vol)
+{
+    qDebug() << "volume set to " << vol << endl;
+    menuMusic->setVolume(vol);
 }

@@ -18,10 +18,13 @@ public:
     QWidget *windowWidget;
 private:
     Ui::MainWindow *ui;
+
+    QMediaPlayer *menuMusic;
 private slots:
     void enterGame();
     void optionsOpen();
     void endTheGame();
+    void volumeSet(qint8 vol);
 
 public slots:
 

@@ -22,16 +22,13 @@ startGameDialog::startGameDialog(QWidget *parent) : QWidget(parent)
     textLabel.setAlignment(Qt::AlignHCenter);
     progress.setAlignment(Qt::AlignHCenter);
 
-    QPushButton *continueButton = new QPushButton("&Spiel fortsetzen",this);
-    QPushButton *newGameButton = new QPushButton("&Neues Spiel",this);
+    QPushButton *continueButton = new QPushButton("&Neues Spiel",this );
     QPushButton *abortButton =new QPushButton("&Abbrechen",this);
 
     connect(continueButton,SIGNAL(clicked()),this,SLOT(continueGame()));
-    connect(newGameButton,SIGNAL(clicked()),this,SLOT(startNewGame()));
     connect(abortButton,SIGNAL(clicked()),this,SLOT(abortDialog()));
 
     hBoxLayout->addWidget(continueButton);
-    hBoxLayout->addWidget(newGameButton);
     hBoxLayout->addWidget(abortButton);
 
     vBoxLayout->addWidget(&progress,Qt::AlignCenter);
@@ -41,8 +38,6 @@ startGameDialog::startGameDialog(QWidget *parent) : QWidget(parent)
     QString StyleSheetDefault = "QPushButton { color: white; background-color: #595959; border: none; font: 17pt 'Microsoft YaHei UI'; outline: none;} QPushButton:hover { background-color: #737373; border-style: solid; border-width: 3px; border-color: #F2F2F2; } QPushButton:pressed { background-color: #A4A4A4; border-style: solid; border-width: 3px; border-color: #E6E6E6; }";
     continueButton->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
     continueButton->setStyleSheet(StyleSheetDefault);
-    newGameButton->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
-    newGameButton->setStyleSheet(StyleSheetDefault);
     abortButton->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
     abortButton->setStyleSheet(StyleSheetDefault);
 
@@ -56,7 +51,7 @@ startGameDialog::~startGameDialog()
 
 void startGameDialog::continueGame()
 {
-    qDebug() << "Game continued." << endl;
+    qDebug() << "Game started." << endl;
 
     textLabel.setHidden(true);
 
@@ -105,13 +100,7 @@ void startGameDialog::continueGame()
         textLabel.setHidden(true);
 
 }
-void startGameDialog::startNewGame()
-{
-    qDebug() << "New game started." << endl;
 
-    textLabel.setText("New Game started.");
-    textLabel.setHidden(false);
-}
 void startGameDialog::abortDialog()
 {
     qDebug() << "Back to menu." << endl;

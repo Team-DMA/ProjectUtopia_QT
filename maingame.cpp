@@ -16,6 +16,8 @@
 #include "levelmenue.h"
 #include "level.h"
 #include "calculator.h"
+#include <QDesktopWidget>
+#include <QRect>
 mainGame::mainGame(int level_pointer,QWidget *parent) : QWidget(parent)
 {
     qDebug() << "Main game started." << endl;
@@ -1109,6 +1111,7 @@ void mainGame::win()
     this->setLayout(winLayout);
 
     QPixmap bkgnd(":/img/you-win.jpg");
+    this->setFixedSize(626,626);
     bkgnd = bkgnd.scaled(this->size()/*, Qt::IgnoreAspectRatio*/);
 
     QPalette palette;
@@ -1123,6 +1126,11 @@ void mainGame::win()
 
     //Connection
     connect(backToLevelMenue_button,SIGNAL(clicked()),this,SLOT(backToLevelMenue()));
+
+    QRect screenGeometry = qApp->desktop()->availableGeometry();
+    int x = (screenGeometry.width()- this->width()) / 2;
+    int y = (screenGeometry.height()- this->height()) / 2;
+    this->move(x, y);
 }
 
 void mainGame::calculatorOpen()

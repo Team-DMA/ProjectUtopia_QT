@@ -94,7 +94,7 @@ void startGameDialog::continueGame()
         progress.setValue(32700);
         this->close();
         levelMenue *mainlevelMenue = new levelMenue();
-        mainlevelMenue->setFixedSize(1600,900);
+        //mainlevelMenue->setFixedSize(1600,900);
         mainlevelMenue->setParent(this);
         mainlevelMenue->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
         mainlevelMenue->activateWindow();

@@ -49,6 +49,11 @@ MainWindow::MainWindow(QWidget *parent)
     vBoxLayout->addWidget(headText,0,Qt::AlignCenter);
     vBoxLayout->addLayout(hBoxLayout);
 
+    QMediaPlayer *menuMusic = new QMediaPlayer();
+    menuMusic->setMedia(QUrl("qrc:/sounds/background.wav"));
+    menuMusic->setParent(this);
+    menuMusic->play();
+
     //design
     headText->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
     enterGame->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);

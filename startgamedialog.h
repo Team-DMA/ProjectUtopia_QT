@@ -16,7 +16,6 @@ private:
     QProgressBar progress;
 private slots:
     void continueGame(void);
-    void startNewGame(void);
     void abortDialog();
 signals:
 
